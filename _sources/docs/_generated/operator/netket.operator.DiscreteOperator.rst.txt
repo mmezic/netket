@@ -36,6 +36,7 @@
       .. automethod:: DiscreteOperator.n_conn
       .. automethod:: DiscreteOperator.to_dense
       .. automethod:: DiscreteOperator.to_linear_operator
+      .. automethod:: DiscreteOperator.to_qobj
       .. automethod:: DiscreteOperator.to_sparse
       .. automethod:: DiscreteOperator.transpose
 
