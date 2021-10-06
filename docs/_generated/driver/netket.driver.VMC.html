@@ -490,13 +490,13 @@
 <li><p><strong>hamiltonian</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">AbstractOperator</span></code>) – The Hamiltonian of the system.</p></li>
 <li><p><strong>optimizer</strong> – Determines how optimization steps are performed given the
 bare energy gradient.</p></li>
-<li><p><strong>preconditioner</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.9)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Callable" title="(in Python v3.9)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Callable</span></code></a>[[<code class="xref py py-class docutils literal notranslate"><span class="pre">VariationalState</span></code>, <a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.9)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code></a>], <a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.9)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code></a>]]) – Determines which preconditioner to use for the loss gradient.
+<li><p><strong>preconditioner</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.10)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Callable" title="(in Python v3.10)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Callable</span></code></a>[[<code class="xref py py-class docutils literal notranslate"><span class="pre">VariationalState</span></code>, <a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.10)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code></a>], <a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.10)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code></a>]]) – Determines which preconditioner to use for the loss gradient.
 This must be a tuple of <cite>(object, solver)</cite> as documented in the section
 <cite>preconditioners</cite> in the documentation. The standard preconditioner
 included with NetKet is Stochastic Reconfiguration. By default, no
 preconditioner is used and the bare gradient is passed to the optimizer.</p></li>
 <li><p><strong>sr</strong> (<em>Optional</em><em>[</em><em>Callable</em><em>[</em><em>[</em><em>netket.vqs.base.VariationalState</em><em>, </em><em>Any</em><em>]</em><em>, </em><em>Any</em><em>]</em><em>]</em>) – </p></li>
-<li><p><strong>sr_restart</strong> (<em>Optional</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)"><em>bool</em></a><em>]</em>) – </p></li>
+<li><p><strong>sr_restart</strong> (<em>Optional</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a><em>]</em>) – </p></li>
 </ul>
 </dd>
 </dl>
@@ -544,7 +544,7 @@ This can be used, for example, to identify the line in a log file.</p>
 <p>steps: (Default=1) number of steps</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>steps</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><em>int</em></a>) – </p>
+<dd class="field-odd"><p><strong>steps</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a>) – </p>
 </dd>
 </dl>
 </dd></dl>
@@ -582,12 +582,12 @@ after every <cite>step_size</cite> steps.</p>
 <li><p><strong>n_iter</strong> – The total number of steps to perform.</p></li>
 <li><p><strong>step_size</strong> – The number of internal steps the simulation
 is advanced every turn.</p></li>
-<li><p><strong>n_steps</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><em>int</em></a>) – </p></li>
-<li><p><strong>step</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><em>int</em></a>) – </p></li>
+<li><p><strong>n_steps</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a>) – </p></li>
+<li><p><strong>step</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a>) – </p></li>
 </ul>
 </dd>
 <dt class="field-even">Yields</dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a> – The current step.</p>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a> – The current step.</p>
 </dd>
 </dl>
 </dd></dl>

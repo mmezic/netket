@@ -498,18 +498,18 @@ Complex numbers are logged as dictionaries <code class="code docutils literal no
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>output_prefix</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>) – the name of the output files before the extension</p></li>
-<li><p><strong>save_params_every</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>) – every how many iterations should machine parameters be
+<li><p><strong>output_prefix</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>) – the name of the output files before the extension</p></li>
+<li><p><strong>save_params_every</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>) – every how many iterations should machine parameters be
 flushed to file</p></li>
-<li><p><strong>write_every</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>) – every how many iterations should data be flushed to file</p></li>
-<li><p><strong>mode</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>) – Specify the behaviour in case the file already exists at this
+<li><p><strong>write_every</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>) – every how many iterations should data be flushed to file</p></li>
+<li><p><strong>mode</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>) – Specify the behaviour in case the file already exists at this
 output_prefix. Options are
 - <cite>[w]rite</cite>: (default) overwrites file if it already exists;
 - <cite>[x]</cite> or <cite>fail</cite>: fails if file already exists;</p></li>
-<li><p><strong>save_params</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a>) – bool flag indicating whever variables of the variational state
+<li><p><strong>save_params</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a>) – bool flag indicating whever variables of the variational state
 should be serialized at some interval. The output file is overwritten
 every time variables are saved again.</p></li>
-<li><p><strong>autoflush_cost</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a>) – Maximum fraction of runtime that can be dedicated to
+<li><p><strong>autoflush_cost</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a>) – Maximum fraction of runtime that can be dedicated to
 serializing data. Defaults to 0.005 (0.5 per cent)</p></li>
 </ul>
 </dd>

@@ -480,7 +480,7 @@
 <dl class="py class">
 <dt id="netket.logging.TensorBoardLog">
 <em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">netket.logging.</span></code><code class="sig-name descname"><span class="pre">TensorBoardLog</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/netket/logging/tensorboard.html#TensorBoardLog"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#netket.logging.TensorBoardLog" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>Creates a tensorboard logger using tensorboardX’s summarywriter.
 Refer to its documentation for further details</p>
 <p><a class="reference external" href="https://tensorboardx.readthedocs.io/en/latest/tensorboard.html">https://tensorboardx.readthedocs.io/en/latest/tensorboard.html</a></p>
@@ -495,14 +495,14 @@ between runs easily. e.g. pass in ‘runs/exp1’, ‘runs/exp2’, etc.
 for each new experiment to compare across them.</p></li>
 <li><p><strong>comment</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">string</span></code>) – Comment logdir suffix appended to the default
 <code class="docutils literal notranslate"><span class="pre">logdir</span></code>. If <code class="docutils literal notranslate"><span class="pre">logdir</span></code> is assigned, this argument has no effect.</p></li>
-<li><p><strong>purge_step</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>) – When logging crashes at step <span class="math notranslate nohighlight">\(T+X\)</span> and restarts at step <span class="math notranslate nohighlight">\(T\)</span>,
+<li><p><strong>purge_step</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>) – When logging crashes at step <span class="math notranslate nohighlight">\(T+X\)</span> and restarts at step <span class="math notranslate nohighlight">\(T\)</span>,
 any events whose global_step larger or equal to <span class="math notranslate nohighlight">\(T\)</span> will be
 purged and hidden from TensorBoard.
 Note that crashed and resumed experiments should have the same <code class="docutils literal notranslate"><span class="pre">logdir</span></code>.</p></li>
-<li><p><strong>max_queue</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>) – Size of the queue for pending events and
+<li><p><strong>max_queue</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>) – Size of the queue for pending events and
 summaries before one of the ‘add’ calls forces a flush to disk.
 Default is ten items.</p></li>
-<li><p><strong>flush_secs</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>) – How often, in seconds, to flush the
+<li><p><strong>flush_secs</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>) – How often, in seconds, to flush the
 pending events and summaries to disk. Default is every two minutes.</p></li>
 <li><p><strong>filename_suffix</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">string</span></code>) – Suffix added to all event filenames in
 the logdir directory. More details on filename construction in

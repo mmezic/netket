@@ -478,7 +478,7 @@
 <dl class="py class">
 <dt id="netket.logging.StateLog">
 <em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">netket.logging.</span></code><code class="sig-name descname"><span class="pre">StateLog</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">output_prefix</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'write'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_every</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tar</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/netket/logging/state_log.html#StateLog"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#netket.logging.StateLog" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>A logger which serializes the variables of the variational state during a run.</p>
 <p>The data is saved either to a directory or tar archive in a sequence of files named
 <cite>[0.mpack, 1.mpack, …]</cite> where the filename is incremented every time the logger is
@@ -491,11 +491,11 @@ deleted or python is shut down.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>output_prefix</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>) – the name of the output file before the extension (if
+<li><p><strong>output_prefix</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>) – the name of the output file before the extension (if
 tar=True) or of the output folder.</p></li>
-<li><p><strong>save_every</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>) – every how many iterations the variables should be saved.
+<li><p><strong>save_every</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>) – every how many iterations the variables should be saved.
 (default 1)</p></li>
-<li><p><strong>mode</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>) – <p>Specify the behaviour in case the file already exists at this
+<li><p><strong>mode</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>) – <p>Specify the behaviour in case the file already exists at this
 output_prefix. Options are
 - <cite>[w]rite</cite>: (default) overwrites file/delete the folder if</p>
 <blockquote>
@@ -507,7 +507,7 @@ creates a new file;</p></li>
 <li><p><cite>[x]</cite> or <cite>fail</cite>: fails if file/folder already exists;</p></li>
 </ul>
 </p></li>
-<li><p><strong>tar</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a>) – if True creates a tar archive instead of a folder.</p></li>
+<li><p><strong>tar</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a>) – if True creates a tar archive instead of a folder.</p></li>
 </ul>
 </dd>
 </dl>
