@@ -116,12 +116,11 @@
 <span class="kn">import</span> <span class="nn">jax</span>
 <span class="kn">import</span> <span class="nn">flax</span>
 <span class="kn">from</span> <span class="nn">flax.core.frozen_dict</span> <span class="kn">import</span> <span class="n">FrozenDict</span>
-
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">jax.numpy</span> <span class="k">as</span> <span class="nn">jnp</span>
+<span class="kn">from</span> <span class="nn">jax.nn.initializers</span> <span class="kn">import</span> <span class="n">normal</span>
 
 <span class="kn">import</span> <span class="nn">netket.jax</span> <span class="k">as</span> <span class="nn">nkjax</span>
-<span class="kn">import</span> <span class="nn">netket.nn</span> <span class="k">as</span> <span class="nn">nknn</span>
 <span class="kn">from</span> <span class="nn">netket.operator</span> <span class="kn">import</span> <span class="n">AbstractOperator</span>
 <span class="kn">from</span> <span class="nn">netket.hilbert</span> <span class="kn">import</span> <span class="n">AbstractHilbert</span>
 <span class="kn">from</span> <span class="nn">netket.utils.types</span> <span class="kn">import</span> <span class="n">PyTree</span><span class="p">,</span> <span class="n">PRNGKeyT</span><span class="p">,</span> <span class="n">NNInitFunc</span>
@@ -222,14 +221,14 @@
 <span class="sd">            model. DO NOT SPECIFY IT INSIDE THE INIT FUNCTION</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            init_fun: a jax initializer such as :ref:`netket.nn.initializers.normal`. Must be a Callable</span>
+<span class="sd">            init_fun: a jax initializer such as :ref:`jax.nn.initializers.normal`. Must be a Callable</span>
 <span class="sd">                taking 3 inputs, the jax PRNG key, the shape and the dtype, and outputting an array with</span>
-<span class="sd">                the valid dtype and shape. If left unspecified, defaults to :code:`netket.nn.initializers.normal(stddev=0.01)`</span>
+<span class="sd">                the valid dtype and shape. If left unspecified, defaults to :code:`jax.nn.initializers.normal(stddev=0.01)`</span>
 <span class="sd">            seed: Optional seed to be used. The seed is synced across all MPI processes. If unspecified, uses</span>
 <span class="sd">                a random seed.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">init_fun</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">init_fun</span> <span class="o">=</span> <span class="n">nknn</span><span class="o">.</span><span class="n">initializers</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">stddev</span><span class="o">=</span><span class="mf">0.01</span><span class="p">)</span>
+            <span class="n">init_fun</span> <span class="o">=</span> <span class="n">normal</span><span class="p">(</span><span class="n">stddev</span><span class="o">=</span><span class="mf">0.01</span><span class="p">)</span>
 
         <span class="n">rng</span> <span class="o">=</span> <span class="n">nkjax</span><span class="o">.</span><span class="n">PRNGSeq</span><span class="p">(</span><span class="n">nkjax</span><span class="o">.</span><span class="n">PRNGKey</span><span class="p">(</span><span class="n">seed</span><span class="p">))</span>
 
