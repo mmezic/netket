@@ -152,7 +152,20 @@
 
 <div class="viewcode-block" id="ARDirectSampler"><a class="viewcode-back" href="../../../docs/_generated/samplers/netket.sampler.ARDirectSampler.html#netket.sampler.ARDirectSampler">[docs]</a><span class="nd">@struct</span><span class="o">.</span><span class="n">dataclass</span>
 <span class="k">class</span> <span class="nc">ARDirectSampler</span><span class="p">(</span><span class="n">Sampler</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Direct sampler for autoregressive neural networks.&quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Direct sampler for autoregressive neural networks.</span>
+
+<span class="sd">    `ARDirectSampler.machine_pow` has no effect. Please set the model&#39;s `machine_pow` instead.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__post_init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">__post_init__</span><span class="p">()</span>
+
+        <span class="c1"># self.machine_pow may be traced in jit</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">machine_pow</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">machine_pow</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="s2">&quot;ARDirectSampler.machine_pow should not be used. Modify the model `machine_pow` directly.&quot;</span>
+            <span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">is_exact</span><span class="p">(</span><span class="n">sampler</span><span class="p">):</span>

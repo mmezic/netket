@@ -122,8 +122,8 @@
     <span class="n">AbstractARNN</span><span class="p">,</span>
     <span class="n">_call</span><span class="p">,</span>
     <span class="n">_conditionals</span><span class="p">,</span>
+    <span class="n">_normalize</span><span class="p">,</span>
     <span class="n">_reshape_inputs</span><span class="p">,</span>
-    <span class="n">l2_normalize</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="kn">from</span> <span class="nn">netket.nn</span> <span class="kn">import</span> <span class="n">FastMaskedConv1D</span><span class="p">,</span> <span class="n">FastMaskedConv2D</span><span class="p">,</span> <span class="n">FastMaskedDense1D</span>
 <span class="kn">from</span> <span class="nn">netket.nn.masked_linear</span> <span class="kn">import</span> <span class="n">default_kernel_init</span>
@@ -157,6 +157,8 @@
     <span class="sd">&quot;&quot;&quot;initializer for the weights.&quot;&quot;&quot;</span>
     <span class="n">bias_init</span><span class="p">:</span> <span class="n">NNInitFunc</span> <span class="o">=</span> <span class="n">zeros</span>
     <span class="sd">&quot;&quot;&quot;initializer for the biases.&quot;&quot;&quot;</span>
+    <span class="n">machine_pow</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2</span>
+    <span class="sd">&quot;&quot;&quot;exponent to normalize the outputs of `__call__`.&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="nf">setup</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">features</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
@@ -218,6 +220,8 @@
     <span class="sd">&quot;&quot;&quot;initializer for the weights.&quot;&quot;&quot;</span>
     <span class="n">bias_init</span><span class="p">:</span> <span class="n">NNInitFunc</span> <span class="o">=</span> <span class="n">zeros</span>
     <span class="sd">&quot;&quot;&quot;initializer for the biases.&quot;&quot;&quot;</span>
+    <span class="n">machine_pow</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2</span>
+    <span class="sd">&quot;&quot;&quot;exponent to normalize the outputs of `__call__`.&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="nf">setup</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">features</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
@@ -281,6 +285,8 @@
     <span class="sd">&quot;&quot;&quot;initializer for the weights.&quot;&quot;&quot;</span>
     <span class="n">bias_init</span><span class="p">:</span> <span class="n">NNInitFunc</span> <span class="o">=</span> <span class="n">zeros</span>
     <span class="sd">&quot;&quot;&quot;initializer for the biases.&quot;&quot;&quot;</span>
+    <span class="n">machine_pow</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2</span>
+    <span class="sd">&quot;&quot;&quot;exponent to normalize the outputs of `__call__`.&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="nf">setup</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">L</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">sqrt</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">hilbert</span><span class="o">.</span><span class="n">size</span><span class="p">))</span>
@@ -335,8 +341,8 @@
             <span class="n">x</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">activation</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
         <span class="n">x</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">_layers</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">update_site</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">index</span><span class="p">)</span>
 
-    <span class="n">log_psi</span> <span class="o">=</span> <span class="n">l2_normalize</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-    <span class="n">p</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">log_psi</span><span class="o">.</span><span class="n">real</span><span class="p">)</span>
+    <span class="n">log_psi</span> <span class="o">=</span> <span class="n">_normalize</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">machine_pow</span><span class="p">)</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">machine_pow</span> <span class="o">*</span> <span class="n">log_psi</span><span class="o">.</span><span class="n">real</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">p</span>
 
 

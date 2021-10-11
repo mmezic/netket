@@ -480,9 +480,11 @@
 <em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">netket.models.</span></code><code class="sig-name descname"><span class="pre">AbstractARNN</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">hilbert</span></em>, <em class="sig-param"><span class="pre">parent=&lt;flax.linen.module._Sentinel</span> <span class="pre">object&gt;</span></em>, <em class="sig-param"><span class="pre">name=None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/netket/models/autoreg.html#AbstractARNN"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#netket.models.AbstractARNN" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://flax.readthedocs.io/en/latest/flax.linen.html#flax.linen.Module" title="(in Flax)"><code class="xref py py-class docutils literal notranslate"><span class="pre">flax.linen.module.Module</span></code></a></p>
 <p>Base class for autoregressive neural networks.</p>
-<p>Subclasses must implement <cite>__call__</cite> and <cite>conditionals</cite>.
+<p>Subclasses must implement the methods <cite>__call__</cite> and <cite>conditionals</cite>.
 They can also override <cite>_conditional</cite> to implement the caching for fast autoregressive sampling.
 See <span class="xref std std-ref">netket.nn.FastARNNConv1D</span> for example.</p>
+<p>They must also implement the field <cite>machine_pow</cite>,
+which specifies the exponent to normalize the outputs of <cite>__call__</cite>.</p>
 <dl class="class-dl-groups">
 <dt>Attributes</dt><dd><dl class="py attribute">
 <dt id="netket.models.AbstractARNN.variables">
