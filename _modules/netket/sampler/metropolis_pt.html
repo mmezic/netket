@@ -365,19 +365,11 @@
                 <span class="c1"># for every rows of the input, swap elements at idxs with elements at inn</span>
                 <span class="nd">@partial</span><span class="p">(</span><span class="n">jax</span><span class="o">.</span><span class="n">vmap</span><span class="p">,</span> <span class="n">in_axes</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">out_axes</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
                 <span class="k">def</span> <span class="nf">swap_rows</span><span class="p">(</span><span class="n">beta_row</span><span class="p">,</span> <span class="n">idxs</span><span class="p">,</span> <span class="n">inn</span><span class="p">):</span>
-                    <span class="n">proposed_beta</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">index_update</span><span class="p">(</span>
-                        <span class="n">beta_row</span><span class="p">,</span>
-                        <span class="n">idxs</span><span class="p">,</span>
-                        <span class="n">beta_row</span><span class="p">[</span><span class="n">inn</span><span class="p">],</span>
-                        <span class="n">unique_indices</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-                        <span class="n">indices_are_sorted</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                    <span class="n">proposed_beta</span> <span class="o">=</span> <span class="n">beta_row</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">idxs</span><span class="p">]</span><span class="o">.</span><span class="n">set</span><span class="p">(</span>
+                        <span class="n">beta_row</span><span class="p">[</span><span class="n">inn</span><span class="p">],</span> <span class="n">unique_indices</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">indices_are_sorted</span><span class="o">=</span><span class="kc">True</span>
                     <span class="p">)</span>
-                    <span class="n">proposed_beta</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">index_update</span><span class="p">(</span>
-                        <span class="n">proposed_beta</span><span class="p">,</span>
-                        <span class="n">inn</span><span class="p">,</span>
-                        <span class="n">beta_row</span><span class="p">[</span><span class="n">idxs</span><span class="p">],</span>
-                        <span class="n">unique_indices</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-                        <span class="n">indices_are_sorted</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                    <span class="n">proposed_beta</span> <span class="o">=</span> <span class="n">proposed_beta</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">inn</span><span class="p">]</span><span class="o">.</span><span class="n">set</span><span class="p">(</span>
+                        <span class="n">beta_row</span><span class="p">[</span><span class="n">idxs</span><span class="p">],</span> <span class="n">unique_indices</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">indices_are_sorted</span><span class="o">=</span><span class="kc">False</span>
                     <span class="p">)</span>
                     <span class="k">return</span> <span class="n">proposed_beta</span>
 
