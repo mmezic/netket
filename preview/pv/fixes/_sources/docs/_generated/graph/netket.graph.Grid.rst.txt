@@ -1,0 +1,15 @@
+﻿netket.graph.Grid
+=================
+
+.. currentmodule:: netket.graph
+
+.. autoclass:: Grid
+   :show-inheritance:
+
+
+   
+      
+   
+      
+
+   
