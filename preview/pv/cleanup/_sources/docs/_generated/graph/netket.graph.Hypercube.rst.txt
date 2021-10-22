@@ -1,0 +1,15 @@
+﻿netket.graph.Hypercube
+======================
+
+.. currentmodule:: netket.graph
+
+.. autoclass:: Hypercube
+   :show-inheritance:
+
+
+   
+      
+   
+      
+
+   
