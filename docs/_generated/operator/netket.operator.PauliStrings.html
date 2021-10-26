@@ -492,11 +492,13 @@
 <dl class="py method">
 <dt id="netket.operator.PauliStrings.__init__">
 <code class="sig-name descname"><span class="pre">__init__</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">hilbert</span></em>, <em class="sig-param"><span class="pre">operators=None</span></em>, <em class="sig-param"><span class="pre">weights=None</span></em>, <em class="sig-param"><span class="pre">*</span></em>, <em class="sig-param"><span class="pre">cutoff=1e-10</span></em>, <em class="sig-param"><span class="pre">dtype=&lt;class</span> <span class="pre">'complex'&gt;</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/netket/operator/_pauli_strings.html#PauliStrings.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#netket.operator.PauliStrings.__init__" title="Permalink to this definition">¶</a></dt>
-<dd><p>Constructs a new <code class="docutils literal notranslate"><span class="pre">PauliStrings</span></code> operator given a set of Pauli operators.</p>
+<dd><p>Constructs a new <code class="docutils literal notranslate"><span class="pre">PauliStrings</span></code> operator given a set of Pauli operators.
+This class has two possible forms for initialization: <code class="docutils literal notranslate"><span class="pre">PauliStrings(hilbert,</span> <span class="pre">operators,</span> <span class="pre">...)</span></code> or  <code class="docutils literal notranslate"><span class="pre">PauliStrings(operators,</span> <span class="pre">...)</span></code>.
+When no hilbert argument is passed, the hilbert defaults to Qubit, where the number of qubits is automatically deduced from the operators.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>hilbert</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">AbstractHilbert</span></code>) – A hilbert space, optional (default is Qubit)</p></li>
+<li><p><strong>hilbert</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">AbstractHilbert</span></code>) – A hilbert space, optional (is no <code class="docutils literal notranslate"><span class="pre">AbstractHilbert</span></code> is passed, default is Qubit)</p></li>
 <li><p><strong>operators</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">list(string)</span></code>) – A list of Pauli operators in string format, e.g. [‘IXX’, ‘XZI’].</p></li>
 <li><p><strong>weights</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.10)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Union" title="(in Python v3.10)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/functions.html#complex" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">complex</span></code></a>]]]) – A list of amplitudes of the corresponding Pauli operator.</p></li>
 <li><p><strong>cutoff</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a>) – a cutoff to remove small matrix elements</p></li>
@@ -505,12 +507,18 @@
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<p>Constructs a new <code class="docutils literal notranslate"><span class="pre">PauliStrings</span></code> operator X_0*X_1 + 3.*Z_0*Z_1.</p>
+<p>Constructs a new <code class="docutils literal notranslate"><span class="pre">PauliStrings</span></code> operator X_0*X_1 + 3.*Z_0*Z_1 with both construction schemes.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">netket</span> <span class="k">as</span> <span class="nn">nk</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">operators</span><span class="p">,</span> <span class="n">weights</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;XX&#39;</span><span class="p">,</span><span class="s1">&#39;ZZ&#39;</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">op</span> <span class="o">=</span> <span class="n">nk</span><span class="o">.</span><span class="n">operator</span><span class="o">.</span><span class="n">PauliStrings</span><span class="p">(</span><span class="n">operators</span><span class="p">,</span> <span class="n">weights</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">op</span><span class="o">.</span><span class="n">hilbert</span>
+<span class="go">Qubit(N=2)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">op</span><span class="o">.</span><span class="n">hilbert</span><span class="o">.</span><span class="n">size</span>
 <span class="go">2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">hilbert</span> <span class="o">=</span> <span class="n">nk</span><span class="o">.</span><span class="n">hilbert</span><span class="o">.</span><span class="n">Spin</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">op</span> <span class="o">=</span> <span class="n">nk</span><span class="o">.</span><span class="n">operator</span><span class="o">.</span><span class="n">PauliStrings</span><span class="p">(</span><span class="n">hilbert</span><span class="p">,</span> <span class="n">operators</span><span class="p">,</span> <span class="n">weights</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">op</span><span class="o">.</span><span class="n">hilbert</span>
+<span class="go">Spin(s=1/2, N=2)</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -668,11 +676,12 @@ complex-conjugated operator otherwise</p>
 <dl class="py method">
 <dt id="netket.operator.PauliStrings.from_openfermion">
 <em class="property"><span class="pre">static</span> </em><code class="sig-name descname"><span class="pre">from_openfermion</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hilbert</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">of_qubit_operator</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_qubits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/netket/operator/_pauli_strings.html#PauliStrings.from_openfermion"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#netket.operator.PauliStrings.from_openfermion" title="Permalink to this definition">¶</a></dt>
-<dd><p>Converts an openfermion QubitOperator into a netket PauliStrings.</p>
+<dd><p>Converts an openfermion QubitOperator into a netket PauliStrings.
+The hilbert first argument can be dropped, see __init__ for details and default value</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>hilbert</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">optional</span></code>) – hilbert of the resulting PauliStrings object (default None gives Qubit)</p></li>
+<li><p><strong>hilbert</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">optional</span></code>) – hilbert of the resulting PauliStrings object</p></li>
 <li><p><strong>of_qubit_operator</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">required</span></code>) – openfermion.ops.QubitOperator object</p></li>
 <li><p><strong>n_qubits</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>) – total number of qubits in the system, default None means inferring it from the QubitOperator. Argument is ignored when hilbert is given.</p></li>
 </ul>
