@@ -1,0 +1,26 @@
+﻿netket.callbacks.Timeout
+========================
+
+.. currentmodule:: netket.callbacks
+
+.. autoclass:: Timeout
+   :show-inheritance:
+
+   .. inheritance-diagram:: netket.callbacks.Timeout
+      :parts: 2
+
+
+   
+   
+
+   .. automethod:: Timeout.__init__
+      
+   
+      
+   .. rst-class:: class-dl-groups
+
+   Methods
+      .. automethod:: Timeout.__call__
+      .. automethod:: Timeout.reset
+
+   

@@ -1,0 +1,18 @@
+﻿netket.sampler.MetropolisExchange
+=================================
+
+.. currentmodule:: netket.sampler
+
+.. autoclass:: MetropolisExchange
+   :show-inheritance:
+
+   .. inheritance-diagram:: netket.sampler.MetropolisExchange
+      :parts: 2
+
+
+   
+      
+   
+      
+
+   

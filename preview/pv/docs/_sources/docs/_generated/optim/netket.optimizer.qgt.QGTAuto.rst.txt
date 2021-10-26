@@ -1,0 +1,19 @@
+﻿netket.optimizer.qgt.QGTAuto
+============================
+
+.. currentmodule:: netket.optimizer.qgt
+
+.. autoclass:: QGTAuto
+   :show-inheritance:
+
+   .. inheritance-diagram:: netket.optimizer.qgt.QGTAuto
+      :parts: 2
+
+
+   
+   
+      
+   
+      
+
+   

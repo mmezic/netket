@@ -1,0 +1,18 @@
+﻿netket.graph.Chain
+==================
+
+.. currentmodule:: netket.graph
+
+.. autoclass:: Chain
+   :show-inheritance:
+
+   .. inheritance-diagram:: netket.graph.Chain
+      :parts: 2
+
+
+   
+      
+   
+      
+
+   
