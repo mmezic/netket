@@ -32,6 +32,7 @@
       .. automethod:: PauliStrings.collect
       .. automethod:: PauliStrings.conj
       .. automethod:: PauliStrings.conjugate
+      .. automethod:: PauliStrings.from_openfermion
       .. automethod:: PauliStrings.get_conn
       .. automethod:: PauliStrings.get_conn_flattened
       .. automethod:: PauliStrings.get_conn_padded

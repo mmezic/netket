@@ -666,6 +666,24 @@ complex-conjugated operator otherwise</p>
 </dd></dl>
 
 <dl class="py method">
+<dt id="netket.operator.PauliStrings.from_openfermion">
+<em class="property"><span class="pre">static</span> </em><code class="sig-name descname"><span class="pre">from_openfermion</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hilbert</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">of_qubit_operator</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_qubits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/netket/operator/_pauli_strings.html#PauliStrings.from_openfermion"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#netket.operator.PauliStrings.from_openfermion" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts an openfermion QubitOperator into a netket PauliStrings.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>hilbert</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">optional</span></code>) – hilbert of the resulting PauliStrings object (default None gives Qubit)</p></li>
+<li><p><strong>of_qubit_operator</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">required</span></code>) – openfermion.ops.QubitOperator object</p></li>
+<li><p><strong>n_qubits</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>) – total number of qubits in the system, default None means inferring it from the QubitOperator. Argument is ignored when hilbert is given.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A PauliStrings object.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt id="netket.operator.PauliStrings.get_conn">
 <code class="sig-name descname"><span class="pre">get_conn</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netket.operator.PauliStrings.get_conn" title="Permalink to this definition">¶</a></dt>
 <dd><p>Finds the connected elements of the Operator. Starting

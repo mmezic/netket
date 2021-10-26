@@ -159,6 +159,11 @@
             <span class="c1"># if first argument is not Hilbert, then shift all arguments by one</span>
             <span class="n">hilbert</span><span class="p">,</span> <span class="n">operators</span><span class="p">,</span> <span class="n">weights</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">hilbert</span><span class="p">,</span> <span class="n">operators</span>
 
+        <span class="k">if</span> <span class="n">operators</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="s2">&quot;None valued operators passed. (Might arised when passing None valued hilbert explicitly)&quot;</span>
+            <span class="p">)</span>
+
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">operators</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;No Pauli operators passed.&quot;</span><span class="p">)</span>
 
@@ -297,6 +302,59 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">_local_states</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">hilbert</span><span class="o">.</span><span class="n">local_states</span><span class="p">)</span>
 
             <span class="bp">self</span><span class="o">.</span><span class="n">_initialized</span> <span class="o">=</span> <span class="kc">True</span>
+
+<div class="viewcode-block" id="PauliStrings.from_openfermion"><a class="viewcode-back" href="../../../docs/_generated/operator/netket.operator.PauliStrings.html#netket.operator.PauliStrings.from_openfermion">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">from_openfermion</span><span class="p">(</span>
+        <span class="n">hilbert</span><span class="p">:</span> <span class="n">AbstractHilbert</span><span class="p">,</span>
+        <span class="n">of_qubit_operator</span><span class="p">:</span> <span class="s2">&quot;openfermion.ops.QubitOperator&quot;</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>  <span class="c1"># noqa: F821</span>
+        <span class="o">*</span><span class="p">,</span>
+        <span class="n">n_qubits</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Converts an openfermion QubitOperator into a netket PauliStrings.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            hilbert (optional): hilbert of the resulting PauliStrings object (default None gives Qubit)</span>
+<span class="sd">            of_qubit_operator (required): openfermion.ops.QubitOperator object</span>
+<span class="sd">            n_qubits (int): total number of qubits in the system, default None means inferring it from the QubitOperator. Argument is ignored when hilbert is given.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            A PauliStrings object.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="kn">from</span> <span class="nn">openfermion.ops</span> <span class="kn">import</span> <span class="n">QubitOperator</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">hilbert</span><span class="p">,</span> <span class="n">AbstractHilbert</span><span class="p">):</span>
+            <span class="c1"># if first argument is not Hilbert, then shift all arguments by one</span>
+            <span class="n">hilbert</span><span class="p">,</span> <span class="n">of_qubit_operator</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">hilbert</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">of_qubit_operator</span><span class="p">,</span> <span class="n">QubitOperator</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
+        <span class="n">operators</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">weights</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">if</span> <span class="n">hilbert</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="c1"># no warning, just overwrite</span>
+            <span class="n">n_qubits</span> <span class="o">=</span> <span class="n">hilbert</span><span class="o">.</span><span class="n">size</span>
+        <span class="k">if</span> <span class="n">n_qubits</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="c1"># we always start counting from 0, so we only determine the maximum location</span>
+            <span class="n">n_qubits</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="nb">max</span><span class="p">(</span>
+                    <span class="nb">max</span><span class="p">(</span><span class="n">term</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">term</span> <span class="ow">in</span> <span class="n">op</span><span class="p">)</span> <span class="k">for</span> <span class="n">op</span> <span class="ow">in</span> <span class="n">of_qubit_operator</span><span class="o">.</span><span class="n">terms</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+                <span class="p">)</span>
+                <span class="o">+</span> <span class="mi">1</span>
+            <span class="p">)</span>
+        <span class="k">for</span> <span class="n">operator</span><span class="p">,</span> <span class="n">weight</span> <span class="ow">in</span> <span class="n">of_qubit_operator</span><span class="o">.</span><span class="n">terms</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>  <span class="c1"># gives dict</span>
+            <span class="n">s</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;I&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="n">n_qubits</span>
+            <span class="k">for</span> <span class="n">loc</span><span class="p">,</span> <span class="n">op</span> <span class="ow">in</span> <span class="n">operator</span><span class="p">:</span>
+                <span class="k">assert</span> <span class="p">(</span>
+                    <span class="n">loc</span> <span class="o">&lt;</span> <span class="n">n_qubits</span>
+                <span class="p">),</span> <span class="s2">&quot;operator index </span><span class="si">{}</span><span class="s2"> is longer than n_qubits=</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">loc</span><span class="p">,</span> <span class="n">n_qubits</span><span class="p">)</span>
+                <span class="n">s</span><span class="p">[</span><span class="n">loc</span><span class="p">]</span> <span class="o">=</span> <span class="n">op</span>
+            <span class="n">operators</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">s</span><span class="p">))</span>
+            <span class="n">weights</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">weight</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">hilbert</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">PauliStrings</span><span class="p">(</span><span class="n">operators</span><span class="p">,</span> <span class="n">weights</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">PauliStrings</span><span class="p">(</span><span class="n">hilbert</span><span class="p">,</span> <span class="n">operators</span><span class="p">,</span> <span class="n">weights</span><span class="p">)</span></div>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">dtype</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">DType</span><span class="p">:</span>
