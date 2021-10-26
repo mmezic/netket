@@ -1,0 +1,15 @@
+﻿netket.sampler.MetropolisHamiltonian
+====================================
+
+.. currentmodule:: netket.sampler
+
+.. autoclass:: MetropolisHamiltonian
+   :show-inheritance:
+
+
+   
+      
+   
+      
+
+   
