@@ -478,13 +478,16 @@
         <span class="n">local_states</span><span class="p">,</span>
         <span class="n">pad</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="n">x_prime</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">max_conn</span><span class="p">,</span> <span class="n">x_prime</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+        <span class="n">x_prime</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">max_conn</span><span class="p">,</span> <span class="n">x_prime</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">x</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
         <span class="n">mels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">max_conn</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">mels</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
         <span class="n">state_1</span> <span class="o">=</span> <span class="n">local_states</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 
         <span class="n">n_c</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
             <span class="n">xb</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">b</span><span class="p">]</span>
+            <span class="c1"># initialize</span>
+            <span class="n">x_prime</span><span class="p">[</span><span class="n">b</span> <span class="o">*</span> <span class="n">max_conn</span> <span class="p">:</span> <span class="p">(</span><span class="n">b</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">max_conn</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">xb</span><span class="p">)</span>
+
             <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">sites</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
                 <span class="n">mel</span> <span class="o">=</span> <span class="mf">0.0</span>
                 <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_op</span><span class="p">[</span><span class="n">i</span><span class="p">]):</span>
@@ -657,6 +660,20 @@
     <span class="k">return</span> <span class="n">new_op</span><span class="p">,</span> <span class="n">new_weight</span>
 
 
+<span class="k">def</span> <span class="nf">_remove_zero_weights</span><span class="p">(</span><span class="n">op_arr</span><span class="p">,</span> <span class="n">w_arr</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">op_arr</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">op_arr</span><span class="p">,</span> <span class="n">w_arr</span>
+    <span class="n">idx_nz</span> <span class="o">=</span> <span class="o">~</span><span class="n">np</span><span class="o">.</span><span class="n">isclose</span><span class="p">(</span><span class="n">w_arr</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">idx_nz</span><span class="p">):</span>
+        <span class="n">operators</span> <span class="o">=</span> <span class="n">op_arr</span><span class="p">[</span><span class="n">idx_nz</span><span class="p">]</span>
+        <span class="n">weights</span> <span class="o">=</span> <span class="n">w_arr</span><span class="p">[</span><span class="n">idx_nz</span><span class="p">]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># convention</span>
+        <span class="n">operators</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="s2">&quot;I&quot;</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">op_arr</span><span class="p">[</span><span class="mi">0</span><span class="p">])])</span>
+        <span class="n">weights</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">w_arr</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">operators</span><span class="p">,</span> <span class="n">weights</span>
+
+
 <span class="k">def</span> <span class="nf">_reduce_pauli_string</span><span class="p">(</span><span class="n">op_arr</span><span class="p">,</span> <span class="n">w_arr</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;From a list of pauli strings, sum the weights of duplicate strings.</span>
 <span class="sd">    Args:</span>
@@ -670,13 +687,12 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">operators_unique</span><span class="p">,</span> <span class="n">idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">op_arr</span><span class="p">,</span> <span class="n">return_inverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">operators_unique</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">op_arr</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">op_arr</span><span class="p">,</span> <span class="n">w_arr</span>
+        <span class="c1"># still remove zeros</span>
+        <span class="k">return</span> <span class="n">_remove_zero_weights</span><span class="p">(</span><span class="n">op_arr</span><span class="p">,</span> <span class="n">w_arr</span><span class="p">)</span>
     <span class="n">summed_weights</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
         <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">w_arr</span><span class="p">[</span><span class="n">idx</span> <span class="o">==</span> <span class="n">i</span><span class="p">])</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">operators_unique</span><span class="p">))]</span>
     <span class="p">)</span>
-    <span class="n">idx_nz</span> <span class="o">=</span> <span class="o">~</span><span class="n">np</span><span class="o">.</span><span class="n">isclose</span><span class="p">(</span><span class="n">summed_weights</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-    <span class="n">operators</span> <span class="o">=</span> <span class="n">operators_unique</span><span class="p">[</span><span class="n">idx_nz</span><span class="p">]</span>
-    <span class="n">weights</span> <span class="o">=</span> <span class="n">summed_weights</span><span class="p">[</span><span class="n">idx_nz</span><span class="p">]</span>
+    <span class="n">operators</span><span class="p">,</span> <span class="n">weights</span> <span class="o">=</span> <span class="n">_remove_zero_weights</span><span class="p">(</span><span class="n">operators_unique</span><span class="p">,</span> <span class="n">summed_weights</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">operators</span><span class="p">,</span> <span class="n">weights</span>
 
 
