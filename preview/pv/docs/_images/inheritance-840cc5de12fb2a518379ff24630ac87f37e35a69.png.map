@@ -1,7 +1,0 @@
-<map id="inheritanceff58c3891b" name="inheritanceff58c3891b">
-<area shape="rect" id="node1" title="Abstract class for quantum Operators. This class prototypes the methods" alt="" coords="73,3,218,17"/>
-<area shape="rect" id="node4" title="This class is the base class for operators defined on a" alt="" coords="245,3,389,17"/>
-<area shape="rect" id="node2" title="Helper class that provides a standard way to create an ABC using" alt="" coords="3,3,46,17"/>
-<area shape="rect" id="node3" title="Generic base class for super&#45;operators acting on the tensor product (DoubledHilbert)" alt="" coords="416,3,606,17"/>
-<area shape="rect" id="node5" title="LocalLiouvillian super&#45;operator, acting on the DoubledHilbert (tensor product) space" alt="" coords="633,3,765,17"/>
-</map>

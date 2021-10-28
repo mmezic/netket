@@ -1,0 +1,6 @@
+<map id="inheritancea6f4252e84" name="inheritancea6f4252e84">
+<area shape="rect" id="node1" title="Helper class that provides a standard way to create an ABC using" alt="" coords="5,5,80,30"/>
+<area shape="rect" id="node2" href="netket.operator.AbstractOperator.html#netket.operator.AbstractOperator" target="_top" title="Abstract class for quantum Operators. This class prototypes the methods" alt="" coords="127,5,314,30"/>
+<area shape="rect" id="node3" href="netket.operator.DiscreteOperator.html#netket.operator.DiscreteOperator" target="_top" title="This class is the base class for operators defined on a" alt="" coords="361,5,548,30"/>
+<area shape="rect" id="node4" href="#netket.operator.LocalOperator" target="_top" title="A custom local operator. This is a sum of an arbitrary number of operators" alt="" coords="595,5,763,30"/>
+</map>

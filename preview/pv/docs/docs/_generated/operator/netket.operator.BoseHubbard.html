@@ -279,9 +279,9 @@
 <li class="toctree-l2"><a class="reference internal" href="../../api.html#graph">Graph</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../graph/netket.graph.AbstractGraph.html">netket.graph.AbstractGraph</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../graph/netket.graph.Graph.html">netket.graph.Graph</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../graph/netket.graph.Lattice.html">netket.graph.Lattice</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../graph/netket.graph.Edgeless.html">netket.graph.Edgeless</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../graph/netket.graph.Hypercube.html">netket.graph.Hypercube</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../graph/netket.graph.Lattice.html">netket.graph.Lattice</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../graph/netket.graph.lattice.LatticeSite.html">netket.graph.lattice.LatticeSite</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../graph/netket.graph.Chain.html">netket.graph.Chain</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../graph/netket.graph.Grid.html">netket.graph.Grid</a></li>
@@ -289,11 +289,16 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../api.html#hilbert">Hilbert</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../hilbert/netket.hilbert.AbstractHilbert.html">netket.hilbert.AbstractHilbert</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../hilbert/netket.hilbert.AbstractParticle.html">netket.hilbert.AbstractParticle</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../hilbert/netket.hilbert.DiscreteHilbert.html">netket.hilbert.DiscreteHilbert</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../hilbert/netket.hilbert.HomogeneousHilbert.html">netket.hilbert.HomogeneousHilbert</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../hilbert/netket.hilbert.CustomHilbert.html">netket.hilbert.CustomHilbert</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../hilbert/netket.hilbert.TensorHilbert.html">netket.hilbert.TensorHilbert</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../hilbert/netket.hilbert.DoubledHilbert.html">netket.hilbert.DoubledHilbert</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../hilbert/netket.hilbert.Fock.html">netket.hilbert.Fock</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../hilbert/netket.hilbert.Qubit.html">netket.hilbert.Qubit</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../hilbert/netket.hilbert.Spin.html">netket.hilbert.Spin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../hilbert/netket.hilbert.Qubit.html">netket.hilbert.Qubit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../hilbert/netket.hilbert.Fock.html">netket.hilbert.Fock</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../hilbert/netket.hilbert.ContinuousBoson.html">netket.hilbert.ContinuousBoson</a></li>
 </ul>
 </li>
 <li class="toctree-l2 current"><a class="reference internal" href="../../api.html#operators">Operators</a><ul class="current">
@@ -487,13 +492,17 @@
 <h1>netket.operator.BoseHubbard<a class="headerlink" href="#netket-operator-bosehubbard" title="Permalink to this headline">¶</a></h1>
 <dl class="py class">
 <dt id="netket.operator.BoseHubbard">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">netket.operator.</span></code><code class="sig-name descname"><span class="pre">BoseHubbard</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">hilbert</span></em>, <em class="sig-param"><span class="pre">graph</span></em>, <em class="sig-param"><span class="pre">U</span></em>, <em class="sig-param"><span class="pre">V=0.0</span></em>, <em class="sig-param"><span class="pre">J=1.0</span></em>, <em class="sig-param"><span class="pre">mu=0.0</span></em>, <em class="sig-param"><span class="pre">dtype=&lt;class</span> <span class="pre">'float'&gt;</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/netket/operator/_hamiltonian.html#BoseHubbard"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#netket.operator.BoseHubbard" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">netket.operator.</span></code><code class="sig-name descname"><span class="pre">BoseHubbard</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">hilbert</span></em>, <em class="sig-param"><span class="pre">graph</span></em>, <em class="sig-param"><span class="pre">U</span></em>, <em class="sig-param"><span class="pre">V=0.0</span></em>, <em class="sig-param"><span class="pre">J=1.0</span></em>, <em class="sig-param"><span class="pre">mu=0.0</span></em>, <em class="sig-param"><span class="pre">dtype=&lt;class</span> <span class="pre">'float'&gt;</span></em><span class="sig-paren">)</span><a class="headerlink" href="#netket.operator.BoseHubbard" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">netket.operator._hamiltonian.SpecialHamiltonian</span></code></p>
 <p>An extended Bose Hubbard model Hamiltonian operator, containing both
 on-site interactions and nearest-neighboring density-density interactions.</p>
 <dl class="class-dl-groups">
-<dt>Inheritance</dt><dd><div class="graphviz"><img src="../../../_images/inheritance-9aa0891be0edf8ef20eb9144cdb065396c28e337.png" alt="Inheritance diagram of netket.operator.BoseHubbard" class="inheritance graphviz" /></div>
-</dd>
+<dt>Inheritance</dt><dd><div class="graphviz"><img src="../../../_images/inheritance-987011e48bb98a4694c9489d45cc5b9888a023d5.png" alt="Inheritance diagram of netket.operator.BoseHubbard" usemap="#inheritance858c3b2527" class="inheritance graphviz" /></div>
+<map id="inheritance858c3b2527" name="inheritance858c3b2527">
+<area shape="rect" id="node5" href="#netket.operator.BoseHubbard" target="_top" title="An extended Bose Hubbard model Hamiltonian operator, containing both" alt="" coords="644,4,764,22"/>
+<area shape="rect" id="node2" href="netket.operator.DiscreteOperator.html#netket.operator.DiscreteOperator" target="_top" title="This class is the base class for operators defined on a" alt="" coords="265,4,403,22"/>
+<area shape="rect" id="node4" href="netket.operator.AbstractOperator.html#netket.operator.AbstractOperator" target="_top" title="Abstract class for quantum Operators. This class prototypes the methods" alt="" coords="93,4,231,22"/>
+</map></dd>
 </dl>
 <dl class="py method">
 <dt id="netket.operator.BoseHubbard.__init__">
@@ -534,7 +543,7 @@ can be specified as well.</p>
 <dd><p>Returns the Conjugate-Transposed operator</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">AbstractOperator</span></code></p>
+<dd class="field-odd"><p><a class="reference internal" href="netket.operator.AbstractOperator.html#netket.operator.AbstractOperator" title="netket.operator.AbstractOperator"><code class="xref py py-class docutils literal notranslate"><span class="pre">AbstractOperator</span></code></a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -551,7 +560,7 @@ can be specified as well.</p>
 <dd><p>Returns the transposed operator</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">AbstractOperator</span></code></p>
+<dd class="field-odd"><p><a class="reference internal" href="netket.operator.AbstractOperator.html#netket.operator.AbstractOperator" title="netket.operator.AbstractOperator"><code class="xref py py-class docutils literal notranslate"><span class="pre">AbstractOperator</span></code></a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -666,7 +675,7 @@ hermitian conjugate…), this is used to obtain a guaranteed non-lazy
 operator.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">AbstractOperator</span></code></p>
+<dd class="field-odd"><p><a class="reference internal" href="netket.operator.AbstractOperator.html#netket.operator.AbstractOperator" title="netket.operator.AbstractOperator"><code class="xref py py-class docutils literal notranslate"><span class="pre">AbstractOperator</span></code></a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -676,7 +685,7 @@ operator.</p>
 <code class="sig-name descname"><span class="pre">conj</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">concrete</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netket.operator.BoseHubbard.conj" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">AbstractOperator</span></code></p>
+<dd class="field-odd"><p><a class="reference internal" href="netket.operator.AbstractOperator.html#netket.operator.AbstractOperator" title="netket.operator.AbstractOperator"><code class="xref py py-class docutils literal notranslate"><span class="pre">AbstractOperator</span></code></a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -874,7 +883,7 @@ low-dimensional Hilbert spaces or sufficiently sparse operators.</p>
 <dd class="field-odd"><p><strong>concrete</strong> – if True returns a concrete operator and not a lazy wrapper</p>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">AbstractOperator</span></code></p>
+<dd class="field-even"><p><a class="reference internal" href="netket.operator.AbstractOperator.html#netket.operator.AbstractOperator" title="netket.operator.AbstractOperator"><code class="xref py py-class docutils literal notranslate"><span class="pre">AbstractOperator</span></code></a></p>
 </dd>
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>if concrete is not True, self or a lazy wrapper; the

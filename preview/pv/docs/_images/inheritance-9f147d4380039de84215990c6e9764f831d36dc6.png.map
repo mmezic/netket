@@ -1,8 +1,0 @@
-<map id="inheritance0a1e90a55c" name="inheritance0a1e90a55c">
-<area shape="rect" id="node1" title="Abstract class for quantum Operators. This class prototypes the methods" alt="" coords="68,3,203,16"/>
-<area shape="rect" id="node3" title="This class is the base class for operators defined on a" alt="" coords="228,3,362,16"/>
-<area shape="rect" id="node2" title="Helper class that provides a standard way to create an ABC using" alt="" coords="3,3,42,16"/>
-<area shape="rect" id="node5" title="A custom local operator. This is a sum of an arbitrary number of operators" alt="" coords="387,3,500,16"/>
-<area shape="rect" id="node4" title="A graph&#45;based quantum operator. In its simplest terms, this is the sum of" alt="" coords="525,3,643,16"/>
-<area shape="rect" id="node6" title="The Heisenberg hamiltonian on a lattice." alt="" coords="668,3,765,16"/>
-</map>

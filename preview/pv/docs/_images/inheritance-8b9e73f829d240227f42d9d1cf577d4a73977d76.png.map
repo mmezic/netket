@@ -1,0 +1,7 @@
+<map id="inheritance22efab6f30" name="inheritance22efab6f30">
+<area shape="rect" id="node1" title="Helper class that provides a standard way to create an ABC using" alt="" coords="4,4,62,23"/>
+<area shape="rect" id="node4" href="netket.hilbert.AbstractHilbert.html#netket.hilbert.AbstractHilbert" target="_top" title="Abstract class for NetKet hilbert objects." alt="" coords="99,4,226,23"/>
+<area shape="rect" id="node2" title="Superoperatorial hilbert space for states living in the tensorised state" alt="" coords="427,4,600,23"/>
+<area shape="rect" id="node5" href="#netket.hilbert.DoubledHilbert" target="_top" title="Superoperatorial hilbert space for states living in the tensorised state" alt="" coords="636,4,764,23"/>
+<area shape="rect" id="node3" href="netket.hilbert.DiscreteHilbert.html#netket.hilbert.DiscreteHilbert" target="_top" title="Abstract class for an hilbert space defined on a lattice." alt="" coords="263,4,391,23"/>
+</map>
