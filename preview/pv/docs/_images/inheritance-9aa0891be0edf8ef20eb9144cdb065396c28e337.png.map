@@ -1,0 +1,6 @@
+<map id="inheritance858c3b2527" name="inheritance858c3b2527">
+<area shape="rect" id="node1" title="Abstract class for quantum Operators. This class prototypes the methods" alt="" coords="81,3,242,19"/>
+<area shape="rect" id="node3" title="This class is the base class for operators defined on a" alt="" coords="272,3,432,19"/>
+<area shape="rect" id="node2" title="Helper class that provides a standard way to create an ABC using" alt="" coords="3,3,51,19"/>
+<area shape="rect" id="node4" title="An extended Bose Hubbard model Hamiltonian operator, containing both" alt="" coords="641,3,765,19"/>
+</map>

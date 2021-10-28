@@ -1,0 +1,6 @@
+<map id="inheritancea6f4252e84" name="inheritancea6f4252e84">
+<area shape="rect" id="node1" title="Abstract class for quantum Operators. This class prototypes the methods" alt="" coords="103,4,310,24"/>
+<area shape="rect" id="node3" title="This class is the base class for operators defined on a" alt="" coords="348,4,553,24"/>
+<area shape="rect" id="node2" title="Helper class that provides a standard way to create an ABC using" alt="" coords="4,4,65,24"/>
+<area shape="rect" id="node4" title="A custom local operator. This is a sum of an arbitrary number of operators" alt="" coords="591,4,764,24"/>
+</map>

@@ -1,0 +1,7 @@
+<map id="inheritance847690d4eb" name="inheritance847690d4eb">
+<area shape="rect" id="node1" title="Helper class that provides a standard way to create an ABC using" alt="" coords="4,4,64,24"/>
+<area shape="rect" id="node2" href="netket.hilbert.AbstractHilbert.html#netket.hilbert.AbstractHilbert" target="_top" title="Abstract class for NetKet hilbert objects." alt="" coords="102,4,234,24"/>
+<area shape="rect" id="node3" title="Abstract class for an hilbert space defined on a lattice." alt="" coords="272,4,404,24"/>
+<area shape="rect" id="node5" title="The Abstract base class for homogeneous hilbert spaces." alt="" coords="442,4,645,24"/>
+<area shape="rect" id="node4" href="#netket.hilbert.Qubit" target="_top" title="Hilbert space obtained as tensor product of local qubit states." alt="" coords="683,4,764,24"/>
+</map>
