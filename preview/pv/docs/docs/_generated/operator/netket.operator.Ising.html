@@ -492,20 +492,8 @@
 <p>The Transverse-Field Ising Hamiltonian <span class="math notranslate nohighlight">\(-h\sum_i \sigma_i^{(x)} +J\sum_{\langle i,j\rangle} \sigma_i^{(z)}\sigma_j^{(z)}\)</span>.</p>
 <p>This implementation is considerably faster than the Ising hamiltonian constructed by summing <a class="reference internal" href="netket.operator.LocalOperator.html#netket.operator.LocalOperator" title="netket.operator.LocalOperator"><code class="xref py py-class docutils literal notranslate"><span class="pre">LocalOperator</span></code></a> s.</p>
 <dl class="class-dl-groups">
-<dt>Inheritance</dt><dd>digraph inheritanceb9d6e37a38 {
-bgcolor=transparent;
-rankdir=LR;
-size=&quot;8.0, 12.0&quot;;
-  &quot;_abstract_operator.AbstractOperator&quot; [fillcolor=white,fontname=&quot;Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans&quot;,fontsize=10,height=0.25,shape=box,style=&quot;setlinewidth(0.5),filled&quot;,tooltip=&quot;Abstract class for quantum Operators. This class prototypes the methods&quot;];
-  &quot;abc.ABC&quot; -&gt; &quot;_abstract_operator.AbstractOperator&quot; [arrowsize=0.5,style=&quot;setlinewidth(0.5)&quot;];
-  &quot;_discrete_operator.DiscreteOperator&quot; [fillcolor=white,fontname=&quot;Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans&quot;,fontsize=10,height=0.25,shape=box,style=&quot;setlinewidth(0.5),filled&quot;,tooltip=&quot;This class is the base class for operators defined on a&quot;];
-  &quot;_abstract_operator.AbstractOperator&quot; -&gt; &quot;_discrete_operator.DiscreteOperator&quot; [arrowsize=0.5,style=&quot;setlinewidth(0.5)&quot;];
-  &quot;_hamiltonian.Ising&quot; [fillcolor=white,fontname=&quot;Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans&quot;,fontsize=10,height=0.25,shape=box,style=&quot;setlinewidth(0.5),filled&quot;,tooltip=&quot;The Transverse-Field Ising Hamiltonian :math:`-h\sum_i \sigma_i^{(x)} +J\sum_{\langle i,j\rangle} \sigma_i^{(z)}\sigma_j^{(z)}`.&quot;];
-  &quot;_hamiltonian.SpecialHamiltonian&quot; -&gt; &quot;_hamiltonian.Ising&quot; [arrowsize=0.5,style=&quot;setlinewidth(0.5)&quot;];
-  &quot;_hamiltonian.SpecialHamiltonian&quot; [fillcolor=white,fontname=&quot;Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans&quot;,fontsize=10,height=0.25,shape=box,style=&quot;setlinewidth(0.5),filled&quot;];
-  &quot;_discrete_operator.DiscreteOperator&quot; -&gt; &quot;_hamiltonian.SpecialHamiltonian&quot; [arrowsize=0.5,style=&quot;setlinewidth(0.5)&quot;];
-  &quot;abc.ABC&quot; [fillcolor=white,fontname=&quot;Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans&quot;,fontsize=10,height=0.25,shape=box,style=&quot;setlinewidth(0.5),filled&quot;,tooltip=&quot;Helper class that provides a standard way to create an ABC using&quot;];
-}
+<dt>Inheritance</dt><dd><div class="graphviz"><object data="../../../_images/inheritance-994db43330607836bc3a56f721594a2c2f3816be.svg" type="image/svg+xml" class="inheritance graphviz">
+<p class="warning">Inheritance diagram of netket.operator.Ising</p></object></div>
 </dd>
 </dl>
 <dl class="py method">

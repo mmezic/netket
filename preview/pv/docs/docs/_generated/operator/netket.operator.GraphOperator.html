@@ -492,20 +492,8 @@
 <p>A graph-based quantum operator. In its simplest terms, this is the sum of
 local operators living on the edge of an arbitrary graph.</p>
 <dl class="class-dl-groups">
-<dt>Inheritance</dt><dd>digraph inheritancebef4ac1362 {
-bgcolor=transparent;
-rankdir=LR;
-size=&quot;8.0, 12.0&quot;;
-  &quot;_abstract_operator.AbstractOperator&quot; [fillcolor=white,fontname=&quot;Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans&quot;,fontsize=10,height=0.25,shape=box,style=&quot;setlinewidth(0.5),filled&quot;,tooltip=&quot;Abstract class for quantum Operators. This class prototypes the methods&quot;];
-  &quot;abc.ABC&quot; -&gt; &quot;_abstract_operator.AbstractOperator&quot; [arrowsize=0.5,style=&quot;setlinewidth(0.5)&quot;];
-  &quot;_discrete_operator.DiscreteOperator&quot; [fillcolor=white,fontname=&quot;Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans&quot;,fontsize=10,height=0.25,shape=box,style=&quot;setlinewidth(0.5),filled&quot;,tooltip=&quot;This class is the base class for operators defined on a&quot;];
-  &quot;_abstract_operator.AbstractOperator&quot; -&gt; &quot;_discrete_operator.DiscreteOperator&quot; [arrowsize=0.5,style=&quot;setlinewidth(0.5)&quot;];
-  &quot;_graph_operator.GraphOperator&quot; [fillcolor=white,fontname=&quot;Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans&quot;,fontsize=10,height=0.25,shape=box,style=&quot;setlinewidth(0.5),filled&quot;,tooltip=&quot;A graph-based quantum operator. In its simplest terms, this is the sum of&quot;];
-  &quot;_local_operator.LocalOperator&quot; -&gt; &quot;_graph_operator.GraphOperator&quot; [arrowsize=0.5,style=&quot;setlinewidth(0.5)&quot;];
-  &quot;_local_operator.LocalOperator&quot; [fillcolor=white,fontname=&quot;Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans&quot;,fontsize=10,height=0.25,shape=box,style=&quot;setlinewidth(0.5),filled&quot;,tooltip=&quot;A custom local operator. This is a sum of an arbitrary number of operators&quot;];
-  &quot;_discrete_operator.DiscreteOperator&quot; -&gt; &quot;_local_operator.LocalOperator&quot; [arrowsize=0.5,style=&quot;setlinewidth(0.5)&quot;];
-  &quot;abc.ABC&quot; [fillcolor=white,fontname=&quot;Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans&quot;,fontsize=10,height=0.25,shape=box,style=&quot;setlinewidth(0.5),filled&quot;,tooltip=&quot;Helper class that provides a standard way to create an ABC using&quot;];
-}
+<dt>Inheritance</dt><dd><div class="graphviz"><object data="../../../_images/inheritance-4c660da37fbe14373129ed32c9797acb647272ac.svg" type="image/svg+xml" class="inheritance graphviz">
+<p class="warning">Inheritance diagram of netket.operator.GraphOperator</p></object></div>
 </dd>
 </dl>
 <dl class="py method">
