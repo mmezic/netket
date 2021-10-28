@@ -486,8 +486,8 @@
 <h1>netket.sampler.rules.HamiltonianRule<a class="headerlink" href="#netket-sampler-rules-hamiltonianrule" title="Permalink to this headline">¶</a></h1>
 <dl class="py class">
 <dt id="netket.sampler.rules.HamiltonianRule">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">netket.sampler.rules.</span></code><code class="sig-name descname"><span class="pre">HamiltonianRule</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">operator</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/netket/sampler/rules/hamiltonian.html#HamiltonianRule"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#netket.sampler.rules.HamiltonianRule" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">netket.sampler.metropolis.MetropolisRule</span></code></p>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">netket.sampler.rules.</span></code><code class="sig-name descname"><span class="pre">HamiltonianRule</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">operator</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netket.sampler.rules.HamiltonianRule" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="netket.sampler.MetropolisRule.html#netket.sampler.MetropolisRule" title="netket.sampler.MetropolisRule"><code class="xref py py-class docutils literal notranslate"><span class="pre">netket.sampler.MetropolisRule</span></code></a></p>
 <p>Rule proposing moves according to the terms in an operator.</p>
 <p>In this case, the transition matrix is taken to be:</p>
 <div class="math notranslate nohighlight">
@@ -526,10 +526,10 @@ It should return an immutable datastructure.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>sampler</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Sampler</span></code>) – the sampler</p></li>
+<li><p><strong>sampler</strong> (<a class="reference internal" href="netket.sampler.Sampler.html#netket.sampler.Sampler" title="netket.sampler.Sampler"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sampler</span></code></a>) – the sampler</p></li>
 <li><p><strong>machine</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Callable" title="(in Python v3.10)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Callable</span></code></a>) – the function to evaluate the model</p></li>
 <li><p><strong>parameters</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.10)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code></a>) – the parameters of the model</p></li>
-<li><p><strong>state</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">SamplerState</span></code>) – the current sampler state</p></li>
+<li><p><strong>state</strong> (<a class="reference internal" href="netket.sampler.SamplerState.html#netket.sampler.SamplerState" title="netket.sampler.SamplerState"><code class="xref py py-class docutils literal notranslate"><span class="pre">SamplerState</span></code></a>) – the current sampler state</p></li>
 <li><p><strong>key</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.10)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code></a>) – the PRNGKey to use to generate the random state</p></li>
 </ul>
 </dd>
@@ -549,10 +549,10 @@ It should return an immutable datastructure.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>sampler</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Sampler</span></code>) – The Metropolis sampler</p></li>
+<li><p><strong>sampler</strong> (<a class="reference internal" href="netket.sampler.Sampler.html#netket.sampler.Sampler" title="netket.sampler.Sampler"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sampler</span></code></a>) – The Metropolis sampler</p></li>
 <li><p><strong>machine</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Callable" title="(in Python v3.10)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Callable</span></code></a>) – The forward evaluation function of the model, accepting PyTrees of parameters and inputs.</p></li>
 <li><p><strong>params</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.10)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code></a>) – The dict of variables needed to evaluate the model.</p></li>
-<li><p><strong>sampler_state</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">SamplerState</span></code>) – The current state of the sampler. Should not modify it.</p></li>
+<li><p><strong>sampler_state</strong> (<a class="reference internal" href="netket.sampler.SamplerState.html#netket.sampler.SamplerState" title="netket.sampler.SamplerState"><code class="xref py py-class docutils literal notranslate"><span class="pre">SamplerState</span></code></a>) – The current state of the sampler. Should not modify it.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type</dt>

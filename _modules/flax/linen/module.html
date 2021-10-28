@@ -682,7 +682,8 @@
 <span class="sd">    and making sure setup is called before any other method.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">is_compact_method</span> <span class="o">=</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">fun</span><span class="p">,</span> <span class="s1">&#39;compact&#39;</span><span class="p">)</span>
-    <span class="n">is_setup_method</span> <span class="o">=</span> <span class="n">fun</span><span class="o">.</span><span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;setup&#39;</span>
+    <span class="n">fun_name</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">fun</span><span class="p">,</span> <span class="s1">&#39;__name__&#39;</span><span class="p">,</span> <span class="s1">&#39;unnamed_function&#39;</span><span class="p">)</span>
+    <span class="n">is_setup_method</span> <span class="o">=</span> <span class="n">fun_name</span> <span class="o">==</span> <span class="s1">&#39;setup&#39;</span>
     <span class="c1"># We lazily call setup() only when needed.</span>
     <span class="k">if</span> <span class="n">is_setup_method</span><span class="p">:</span>
       <span class="n">is_recurrent</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_state</span><span class="o">.</span><span class="n">in_setup</span>
@@ -700,8 +701,8 @@
       <span class="n">y</span> <span class="o">=</span> <span class="n">fun</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
       <span class="k">if</span> <span class="n">_context</span><span class="o">.</span><span class="n">capture_stack</span><span class="p">:</span>
         <span class="n">filter_fn</span> <span class="o">=</span> <span class="n">_context</span><span class="o">.</span><span class="n">capture_stack</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-        <span class="k">if</span> <span class="n">filter_fn</span> <span class="ow">and</span> <span class="n">filter_fn</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fun</span><span class="o">.</span><span class="vm">__name__</span><span class="p">):</span>
-          <span class="bp">self</span><span class="o">.</span><span class="n">sow</span><span class="p">(</span><span class="s1">&#39;intermediates&#39;</span><span class="p">,</span> <span class="n">fun</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">filter_fn</span> <span class="ow">and</span> <span class="n">filter_fn</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fun_name</span><span class="p">):</span>
+          <span class="bp">self</span><span class="o">.</span><span class="n">sow</span><span class="p">(</span><span class="s1">&#39;intermediates&#39;</span><span class="p">,</span> <span class="n">fun_name</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
       <span class="k">return</span> <span class="n">y</span>
     <span class="k">finally</span><span class="p">:</span>
       <span class="n">_context</span><span class="o">.</span><span class="n">module_stack</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
@@ -1180,9 +1181,9 @@
 <span class="sd">      collections.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">rngs</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
-      <span class="k">if</span> <span class="n">rngs</span><span class="o">.</span><span class="n">shape</span> <span class="o">!=</span> <span class="p">(</span><span class="mi">2</span><span class="p">,):</span>
+      <span class="k">if</span> <span class="ow">not</span> <span class="n">core</span><span class="o">.</span><span class="n">scope</span><span class="o">.</span><span class="n">_is_valid_rng</span><span class="p">(</span><span class="n">rngs</span><span class="p">):</span>
         <span class="k">raise</span> <span class="n">errors</span><span class="o">.</span><span class="n">InvalidRngError</span><span class="p">(</span>
-            <span class="s1">&#39;RNGs should be of shape (2,) in Module &#39;</span>
+            <span class="s1">&#39;RNGs should be of shape (2,) or KeyArray in Module &#39;</span>
             <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s1">, but rngs are: </span><span class="si">{</span><span class="n">rngs</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
       <span class="n">rngs</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;params&#39;</span><span class="p">:</span> <span class="n">rngs</span><span class="p">}</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span>

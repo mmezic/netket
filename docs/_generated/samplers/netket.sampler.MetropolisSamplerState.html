@@ -484,8 +484,8 @@
 <h1>netket.sampler.MetropolisSamplerState<a class="headerlink" href="#netket-sampler-metropolissamplerstate" title="Permalink to this headline">¶</a></h1>
 <dl class="py class">
 <dt id="netket.sampler.MetropolisSamplerState">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">netket.sampler.</span></code><code class="sig-name descname"><span class="pre">MetropolisSamplerState</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">__precompute_cached_properties</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">__skip_preprocess</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/netket/sampler/metropolis.html#MetropolisSamplerState"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#netket.sampler.MetropolisSamplerState" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">netket.sampler.base.SamplerState</span></code></p>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">netket.sampler.</span></code><code class="sig-name descname"><span class="pre">MetropolisSamplerState</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">__precompute_cached_properties</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">__skip_preprocess</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netket.sampler.MetropolisSamplerState" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="netket.sampler.SamplerState.html#netket.sampler.SamplerState" title="netket.sampler.SamplerState"><code class="xref py py-class docutils literal notranslate"><span class="pre">netket.sampler.SamplerState</span></code></a></p>
 <p>State for a metropolis sampler.
 Contains the current configuration, the rng state and the (optional)
 state of the transition rule.</p>
@@ -534,8 +534,7 @@ Will return None if no sampling has been performed since then.</p>
 <dl class="py attribute">
 <dt id="netket.sampler.MetropolisSamplerState.n_accepted_proc">
 <code class="sig-name descname"><span class="pre">n_accepted_proc</span></code><em class="property"><span class="pre">:</span> <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><span class="pre">int</span></a></em><em class="property"> <span class="pre">=</span> <span class="pre">0</span></em><a class="headerlink" href="#netket.sampler.MetropolisSamplerState.n_accepted_proc" title="Permalink to this definition">¶</a></dt>
-<dd><p>Number of accepted transitions among the chains in this process since the last reset.</p>
-</dd></dl>
+<dd></dd></dl>
 
 <dl class="py attribute">
 <dt id="netket.sampler.MetropolisSamplerState.n_steps">
@@ -551,8 +550,7 @@ Will return None if no sampling has been performed since then.</p>
 <dl class="py attribute">
 <dt id="netket.sampler.MetropolisSamplerState.n_steps_proc">
 <code class="sig-name descname"><span class="pre">n_steps_proc</span></code><em class="property"><span class="pre">:</span> <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><span class="pre">int</span></a></em><em class="property"> <span class="pre">=</span> <span class="pre">0</span></em><a class="headerlink" href="#netket.sampler.MetropolisSamplerState.n_steps_proc" title="Permalink to this definition">¶</a></dt>
-<dd><p>Number of moves performed along the chains in this process since the last reset.</p>
-</dd></dl>
+<dd></dd></dl>
 
 </dd>
 </dl>
