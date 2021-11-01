@@ -1074,12 +1074,9 @@
                 <span class="n">c</span> <span class="o">+=</span> <span class="mi">1</span>
 
             <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_operators</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">nonzero_diagonal</span><span class="p">:</span>
+                    <span class="n">mels</span><span class="p">[</span><span class="n">c_diag</span><span class="p">]</span> <span class="o">+=</span> <span class="n">diag_mels</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">xs_n</span><span class="p">[</span><span class="n">b</span><span class="p">,</span> <span class="n">i</span><span class="p">]]</span>
 
-                <span class="c1"># Diagonal part</span>
-                <span class="c1">#  If nonzero_diagonal, this goes to c_diag = 0 ....</span>
-                <span class="c1"># if zero_diagonal this just sets the last element to 0</span>
-                <span class="c1"># so it&#39;s not worth it skipping it</span>
-                <span class="n">mels</span><span class="p">[</span><span class="n">c_diag</span><span class="p">]</span> <span class="o">+=</span> <span class="n">diag_mels</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">xs_n</span><span class="p">[</span><span class="n">b</span><span class="p">,</span> <span class="n">i</span><span class="p">]]</span>
                 <span class="n">n_conn_i</span> <span class="o">=</span> <span class="n">n_conns</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">xs_n</span><span class="p">[</span><span class="n">b</span><span class="p">,</span> <span class="n">i</span><span class="p">]]</span>
 
                 <span class="k">if</span> <span class="n">n_conn_i</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
