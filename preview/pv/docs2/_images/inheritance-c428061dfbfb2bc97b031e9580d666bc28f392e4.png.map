@@ -1,0 +1,14 @@
+<map id="inheritancea41024210a" name="inheritancea41024210a">
+<area shape="rect" id="node1" href="_generated/hilbert/netket.hilbert.AbstractHilbert.html#netket.hilbert.AbstractHilbert" target="_top" title="Abstract class for NetKet hilbert objects." alt="" coords="5,116,125,141"/>
+<area shape="rect" id="node2" href="_generated/hilbert/netket.hilbert.AbstractParticle.html#netket.hilbert.AbstractParticle" target="_top" title="Abstract class for the Hilbert space of particles" alt="" coords="173,55,297,80"/>
+<area shape="rect" id="node7" href="_generated/hilbert/netket.hilbert.DiscreteHilbert.html#netket.hilbert.DiscreteHilbert" target="_top" title="Abstract class for an hilbert space defined on a lattice." alt="" coords="175,140,295,165"/>
+<area shape="rect" id="node3" href="_generated/hilbert/netket.hilbert.ContinuousBoson.html#netket.hilbert.ContinuousBoson" target="_top" title="Hilbert space derived from AbstractParticle for" alt="" coords="358,5,493,31"/>
+<area shape="rect" id="node4" title="Hilbert space derived from AbstractParticle for" alt="" coords="351,55,499,80"/>
+<area shape="rect" id="node5" href="_generated/hilbert/netket.hilbert.CustomHilbert.html#netket.hilbert.CustomHilbert" target="_top" title="A custom hilbert space with discrete local quantum numbers." alt="" coords="553,31,669,56"/>
+<area shape="rect" id="node6" href="_generated/hilbert/netket.hilbert.HomogeneousHilbert.html#netket.hilbert.HomogeneousHilbert" target="_top" title="The Abstract base class for homogeneous hilbert spaces." alt="" coords="345,104,505,129"/>
+<area shape="rect" id="node9" href="_generated/hilbert/netket.hilbert.Fock.html#netket.hilbert.Fock" target="_top" title="Hilbert space obtained as tensor product of local fock basis." alt="" coords="575,80,647,105"/>
+<area shape="rect" id="node10" href="_generated/hilbert/netket.hilbert.Qubit.html#netket.hilbert.Qubit" target="_top" title="Hilbert space obtained as tensor product of local qubit states." alt="" coords="575,129,647,155"/>
+<area shape="rect" id="node11" href="_generated/hilbert/netket.hilbert.Spin.html#netket.hilbert.Spin" target="_top" title="Hilbert space obtained as tensor product of local spin states." alt="" coords="575,179,647,204"/>
+<area shape="rect" id="node8" href="_generated/hilbert/netket.hilbert.DoubledHilbert.html#netket.hilbert.DoubledHilbert" target="_top" title="Superoperatorial hilbert space for states living in the tensorised state" alt="" coords="365,177,485,203"/>
+<area shape="rect" id="node12" href="_generated/hilbert/netket.hilbert.TensorHilbert.html#netket.hilbert.TensorHilbert" target="_top" title="Tensor product of several Discrete sub&#45;spaces, representing the space" alt="" coords="371,227,479,252"/>
+</map>
