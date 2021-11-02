@@ -7,6 +7,7 @@
     <title>netket.graph.Lattice &#8212; netket v3.0 documentation</title>
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/jumbo-style.css" />
@@ -24,8 +25,8 @@
     <link rel="author" title="About these documents" href="../../../about.html" />
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="netket.graph.lattice.LatticeSite" href="netket.graph.lattice.LatticeSite.html" />
-    <link rel="prev" title="netket.graph.Hypercube" href="netket.graph.Hypercube.html" />
+    <link rel="next" title="netket.graph.Edgeless" href="netket.graph.Edgeless.html" />
+    <link rel="prev" title="netket.graph.Graph" href="netket.graph.Graph.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
@@ -278,9 +279,9 @@
 <li class="toctree-l2 current"><a class="reference internal" href="../../api.html#graph">Graph</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="netket.graph.AbstractGraph.html">netket.graph.AbstractGraph</a></li>
 <li class="toctree-l3"><a class="reference internal" href="netket.graph.Graph.html">netket.graph.Graph</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">netket.graph.Lattice</a></li>
 <li class="toctree-l3"><a class="reference internal" href="netket.graph.Edgeless.html">netket.graph.Edgeless</a></li>
 <li class="toctree-l3"><a class="reference internal" href="netket.graph.Hypercube.html">netket.graph.Hypercube</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">netket.graph.Lattice</a></li>
 <li class="toctree-l3"><a class="reference internal" href="netket.graph.lattice.LatticeSite.html">netket.graph.lattice.LatticeSite</a></li>
 <li class="toctree-l3"><a class="reference internal" href="netket.graph.Chain.html">netket.graph.Chain</a></li>
 <li class="toctree-l3"><a class="reference internal" href="netket.graph.Grid.html">netket.graph.Grid</a></li>
@@ -288,11 +289,16 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../api.html#hilbert">Hilbert</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../hilbert/netket.hilbert.AbstractHilbert.html">netket.hilbert.AbstractHilbert</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../hilbert/netket.hilbert.AbstractParticle.html">netket.hilbert.AbstractParticle</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../hilbert/netket.hilbert.DiscreteHilbert.html">netket.hilbert.DiscreteHilbert</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../hilbert/netket.hilbert.HomogeneousHilbert.html">netket.hilbert.HomogeneousHilbert</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../hilbert/netket.hilbert.CustomHilbert.html">netket.hilbert.CustomHilbert</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../hilbert/netket.hilbert.TensorHilbert.html">netket.hilbert.TensorHilbert</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../hilbert/netket.hilbert.DoubledHilbert.html">netket.hilbert.DoubledHilbert</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../hilbert/netket.hilbert.Fock.html">netket.hilbert.Fock</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../hilbert/netket.hilbert.Qubit.html">netket.hilbert.Qubit</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../hilbert/netket.hilbert.Spin.html">netket.hilbert.Spin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../hilbert/netket.hilbert.Qubit.html">netket.hilbert.Qubit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../hilbert/netket.hilbert.Fock.html">netket.hilbert.Fock</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../hilbert/netket.hilbert.ContinuousBoson.html">netket.hilbert.ContinuousBoson</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../api.html#operators">Operators</a><ul>
@@ -520,6 +526,14 @@ Basis coordinates are available from <a class="reference internal" href="#netket
 and can be resolved into an id via
 <a class="reference internal" href="#netket.graph.Lattice.id_from_basis_coords" title="netket.graph.Lattice.id_from_basis_coords"><code class="xref py py-func docutils literal notranslate"><span class="pre">id_from_basis_coords()</span></code></a>.</p>
 </dd>
+</dl>
+<dl class="class-dl-groups">
+<dt>Inheritance</dt><dd><div class="graphviz"><img src="../../../_images/inheritance-cc205cd68647ff47d706c28217b1368028b7c760.png" alt="Inheritance diagram of netket.graph.Lattice" usemap="#inheritance793b7b4655" class="inheritance graphviz" /></div>
+<map id="inheritance793b7b4655" name="inheritance793b7b4655">
+<area shape="rect" id="node1" href="netket.graph.AbstractGraph.html#netket.graph.AbstractGraph" target="_top" title="Abstract class for NetKet graph objects." alt="" coords="5,5,161,31"/>
+<area shape="rect" id="node2" href="netket.graph.Graph.html#netket.graph.Graph" target="_top" title="A simple implementation of Graph based on an external graph library." alt="" coords="209,5,312,31"/>
+<area shape="rect" id="node3" href="#netket.graph.Lattice" target="_top" title="A lattice built by periodic arrangement of a given unit cell." alt="" coords="360,5,467,31"/>
+</map></dd>
 </dl>
 <dl class="py method">
 <dt id="netket.graph.Lattice.__init__">

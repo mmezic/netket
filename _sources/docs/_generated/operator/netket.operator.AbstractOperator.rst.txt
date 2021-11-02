@@ -6,8 +6,15 @@
 .. autoclass:: AbstractOperator
    :show-inheritance:
 
-
    
+
+   .. rst-class:: class-dl-groups
+
+   Inheritance
+      .. inheritance-diagram:: netket.operator.AbstractOperator
+         :parts: 2
+
+
    
       
    .. rst-class:: class-dl-groups

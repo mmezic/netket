@@ -6,8 +6,15 @@
 .. autoclass:: PauliStrings
    :show-inheritance:
 
-
    
+
+   .. rst-class:: class-dl-groups
+
+   Inheritance
+      .. inheritance-diagram:: netket.operator.PauliStrings
+         :parts: 2
+
+
    
 
    .. automethod:: PauliStrings.__init__
