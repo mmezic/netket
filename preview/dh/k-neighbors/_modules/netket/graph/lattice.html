@@ -203,6 +203,11 @@
 
 
 <span class="k">def</span> <span class="nf">get_edges</span><span class="p">(</span><span class="n">positions</span><span class="p">,</span> <span class="n">cutoff</span><span class="p">,</span> <span class="n">order</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Given an array of spatial `positions`, returns a list `es`, so that</span>
+<span class="sd">    `es[k]` contains all pairs of (k + 1)-nearest neighbors up to `order`.</span>
+<span class="sd">    Only edges up to distance `cutoff` are considered.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">kdtree</span> <span class="o">=</span> <span class="n">cKDTree</span><span class="p">(</span><span class="n">positions</span><span class="p">)</span>
     <span class="n">dist_matrix</span> <span class="o">=</span> <span class="n">kdtree</span><span class="o">.</span><span class="n">sparse_distance_matrix</span><span class="p">(</span><span class="n">kdtree</span><span class="p">,</span> <span class="n">cutoff</span><span class="p">)</span>
     <span class="n">row</span><span class="p">,</span> <span class="n">col</span><span class="p">,</span> <span class="n">dst</span> <span class="o">=</span> <span class="n">find</span><span class="p">(</span><span class="n">triu</span><span class="p">(</span><span class="n">dist_matrix</span><span class="p">))</span>
@@ -354,7 +359,7 @@
 <span class="sd">            max_neighbor_order: For :code:`max_neighbor_order == k`, edges between up</span>
 <span class="sd">                to :math:`k`-nearest neighbor sites (measured by their Euclidean distance)</span>
 <span class="sd">                are included in the graph. The edges can be distiguished by their color,</span>
-<span class="sd">                which is set to :math:`k`.</span>
+<span class="sd">                which is set to :math:`k - 1` (so nearest-neighbor edges have color 0).</span>
 
 <span class="sd">        Examples:</span>
 <span class="sd">            Constructs a Kagome lattice with 3 × 3 unit cells:</span>

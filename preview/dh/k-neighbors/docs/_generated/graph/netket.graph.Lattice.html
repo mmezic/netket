@@ -560,7 +560,7 @@ the purpose of identifying nearest neighbors.</p></li>
 <li><p><strong>max_neighbor_order</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>) – For <code class="code docutils literal notranslate"><span class="pre">max_neighbor_order</span> <span class="pre">==</span> <span class="pre">k</span></code>, edges between up
 to <span class="math notranslate nohighlight">\(k\)</span>-nearest neighbor sites (measured by their Euclidean distance)
 are included in the graph. The edges can be distiguished by their color,
-which is set to <span class="math notranslate nohighlight">\(k\)</span>.</p></li>
+which is set to <span class="math notranslate nohighlight">\(k - 1\)</span> (so nearest-neighbor edges have color 0).</p></li>
 <li><p><strong>atoms_coord</strong> (<em>Optional</em><em>[</em><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.21)"><em>numpy.ndarray</em></a><em>]</em>) – </p></li>
 </ul>
 </dd>
