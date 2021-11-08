@@ -506,45 +506,33 @@
 <dl class="py method">
 <dt id="netket.operator.Heisenberg.__init__">
 <code class="sig-name descname"><span class="pre">__init__</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hilbert</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">graph</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">J</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sign_rule</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">acting_on_subspace</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/netket/operator/_hamiltonian.html#Heisenberg.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#netket.operator.Heisenberg.__init__" title="Permalink to this definition">¶</a></dt>
-<dd><blockquote>
-<div><p>Constructs an Heisenberg operator given a hilbert space and a graph providing the
+<dd><p>Constructs an Heisenberg operator given a hilbert space and a graph providing the
 connectivity of the lattice.</p>
-<dl>
-<dt>Args:</dt><dd><p>hilbert: Hilbert space the operator acts on.
-graph: The graph upon which this hamiltonian is defined.
-J: The strength of the coupling. Default is 1.</p>
-<blockquote>
-<div><p>Can pass a sequence of coupling strengths with coloured graphs:
-edges of colour n will have coupling strength J[n]</p>
-</div></blockquote>
-<dl class="simple">
-<dt>sign_rule: If True, Marshal’s sign rule will be used. On a bipartite</dt><dd><p>lattice, this corresponds to a basis change flipping the Sz direction
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>hilbert</strong> (<a class="reference internal" href="../hilbert/netket.hilbert.AbstractHilbert.html#netket.hilbert.AbstractHilbert" title="netket.hilbert.AbstractHilbert"><code class="xref py py-class docutils literal notranslate"><span class="pre">AbstractHilbert</span></code></a>) – Hilbert space the operator acts on.</p></li>
+<li><p><strong>graph</strong> (<a class="reference internal" href="../graph/netket.graph.AbstractGraph.html#netket.graph.AbstractGraph" title="netket.graph.AbstractGraph"><code class="xref py py-class docutils literal notranslate"><span class="pre">AbstractGraph</span></code></a>) – The graph upon which this hamiltonian is defined.</p></li>
+<li><p><strong>J</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Union" title="(in Python v3.10)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Sequence" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sequence</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a>]]) – The strength of the coupling. Default is 1.
+Can pass a sequence of coupling strengths with coloured graphs:
+edges of colour n will have coupling strength J[n]</p></li>
+<li><p><strong>sign_rule</strong> – If True, Marshal’s sign rule will be used. On a bipartite
+lattice, this corresponds to a basis change flipping the Sz direction
 at every odd site of the lattice. For non-bipartite lattices, the
 sign rule cannot be applied. Defaults to True if the lattice is
-bipartite, False otherwise.</p>
-</dd>
-</dl>
-</dd>
-</dl>
-</div></blockquote>
-<dl class="simple">
-<dt>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</dt><dd><p>If a sequence of coupling strengths is passed, defaults to False
-and a matching sequence of sign_rule must be specified to override it</p>
-</dd>
-</dl>
-<blockquote>
-<div><dl class="simple">
-<dt>acting_on_subspace: Specifies the mapping between nodes of the graph and</dt><dd><p>Hilbert space sites, so that graph node <code class="code docutils literal notranslate"><span class="pre">i</span> <span class="pre">∈</span> <span class="pre">[0,</span> <span class="pre">...,</span> <span class="pre">graph.n_nodes</span> <span class="pre">-</span> <span class="pre">1]</span></code>,
+bipartite, False otherwise.
+If a sequence of coupling strengths is passed, defaults to False
+and a matching sequence of sign_rule must be specified to override it</p></li>
+<li><p><strong>acting_on_subspace</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Union" title="(in Python v3.10)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>], <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>]) – Specifies the mapping between nodes of the graph and
+Hilbert space sites, so that graph node <code class="code docutils literal notranslate"><span class="pre">i</span> <span class="pre">∈</span> <span class="pre">[0,</span> <span class="pre">...,</span> <span class="pre">graph.n_nodes</span> <span class="pre">-</span> <span class="pre">1]</span></code>,
 corresponds to <code class="code docutils literal notranslate"><span class="pre">acting_on_subspace[i]</span> <span class="pre">∈</span> <span class="pre">[0,</span> <span class="pre">...,</span> <span class="pre">hilbert.n_sites]</span></code>.
 Must be a list of length <cite>graph.n_nodes</cite>. Passing a single integer <code class="code docutils literal notranslate"><span class="pre">start</span></code>
-is equivalent to <code class="code docutils literal notranslate"><span class="pre">[start,</span> <span class="pre">...,</span> <span class="pre">start</span> <span class="pre">+</span> <span class="pre">graph.n_nodes</span> <span class="pre">-</span> <span class="pre">1]</span></code>.</p>
+is equivalent to <code class="code docutils literal notranslate"><span class="pre">[start,</span> <span class="pre">...,</span> <span class="pre">start</span> <span class="pre">+</span> <span class="pre">graph.n_nodes</span> <span class="pre">-</span> <span class="pre">1]</span></code>.</p></li>
+</ul>
 </dd>
 </dl>
-</div></blockquote>
-<p>&gt;&gt;&gt;&gt;&gt;&gt;&gt; b0db5606… GraphOperator: Add option to map graph to Hilbert space sites</p>
-<blockquote>
-<div><dl>
-<dt>Examples:</dt><dd><p>Constructs a <code class="docutils literal notranslate"><span class="pre">Heisenberg</span></code> operator for a 1D system.</p>
+<p class="rubric">Examples</p>
+<p>Constructs a <code class="docutils literal notranslate"><span class="pre">Heisenberg</span></code> operator for a 1D system.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">netket</span> <span class="k">as</span> <span class="nn">nk</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">g</span> <span class="o">=</span> <span class="n">nk</span><span class="o">.</span><span class="n">graph</span><span class="o">.</span><span class="n">Hypercube</span><span class="p">(</span><span class="n">length</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">n_dim</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">pbc</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">hi</span> <span class="o">=</span> <span class="n">nk</span><span class="o">.</span><span class="n">hilbert</span><span class="o">.</span><span class="n">Spin</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">total_sz</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">N</span><span class="o">=</span><span class="n">g</span><span class="o">.</span><span class="n">n_nodes</span><span class="p">)</span>
@@ -553,19 +541,6 @@ is equivalent to <code class="code docutils literal notranslate"><span class="pr
 <span class="go">Heisenberg(J=1.0, sign_rule=True; dim=20)</span>
 </pre></div>
 </div>
-</dd>
-</dl>
-</div></blockquote>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>hilbert</strong> (<a class="reference internal" href="../hilbert/netket.hilbert.AbstractHilbert.html#netket.hilbert.AbstractHilbert" title="netket.hilbert.AbstractHilbert"><em>netket.hilbert.AbstractHilbert</em></a>) – </p></li>
-<li><p><strong>graph</strong> (<a class="reference internal" href="../graph/netket.graph.AbstractGraph.html#netket.graph.AbstractGraph" title="netket.graph.AbstractGraph"><em>netket.graph.AbstractGraph</em></a>) – </p></li>
-<li><p><strong>J</strong> (<em>Union</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a><em>, </em><em>Sequence</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a><em>]</em><em>]</em>) – </p></li>
-<li><p><strong>acting_on_subspace</strong> (<em>Optional</em><em>[</em><em>Union</em><em>[</em><em>List</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a><em>]</em><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a><em>]</em><em>]</em>) – </p></li>
-</ul>
-</dd>
-</dl>
 </dd></dl>
 
 <dl class="class-dl-groups">
