@@ -528,7 +528,7 @@ If None, sweep_size is equal to the number of degrees of freedom (n_visible).</p
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># Transverse-field Ising Hamiltonian</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ha</span> <span class="o">=</span> <span class="n">nk</span><span class="o">.</span><span class="n">operator</span><span class="o">.</span><span class="n">Ising</span><span class="p">(</span><span class="n">hilbert</span><span class="o">=</span><span class="n">hi</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">graph</span><span class="o">=</span><span class="n">g</span><span class="p">)</span>
 <span class="go">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Construct a MetropolisExchange Sampler</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Construct a MetropolisHamiltonian Sampler</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">sa</span> <span class="o">=</span> <span class="n">nk</span><span class="o">.</span><span class="n">sampler</span><span class="o">.</span><span class="n">MetropolisHamiltonian</span><span class="p">(</span><span class="n">hi</span><span class="p">,</span> <span class="n">hamiltonian</span><span class="o">=</span><span class="n">ha</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">sa</span><span class="p">)</span>
 <span class="go">MetropolisSampler(rule = HamiltonianRule(Ising(J=1.0, h=1.0; dim=100)), n_chains = 16, machine_power = 2, n_sweeps = 100, dtype = &lt;class &#39;numpy.float64&#39;&gt;)</span>

@@ -496,8 +496,8 @@
 <p>The transition rule is used to generate a proposed state <span class="math notranslate nohighlight">\(s^\prime\)</span>, starting from the
 current state <span class="math notranslate nohighlight">\(s\)</span>. The move is accepted with probability</p>
 <div class="math notranslate nohighlight">
-\[A(s \rightarrow s^\prime) = \mathrm{min} \left( 1,\frac{P(s^\prime)}{P(s)} F(e^{L(s,s^\prime)}) \right) ,\]</div>
-<p>where the probability being sampled from is <span class="math notranslate nohighlight">\(P(s)=|M(s)|^p. Here ::math::\)</span> is a
+\[A(s \rightarrow s^\prime) = \mathrm{min} \left( 1,\frac{P(s^\prime)}{P(s)} e^{L(s,s^\prime)} \right) ,\]</div>
+<p>where the probability being sampled from is <span class="math notranslate nohighlight">\(P(s)=|M(s)|^p. Here :math:\)</span> is a
 user-provided function (the machine), <span class="math notranslate nohighlight">\(p\)</span> is also user-provided with default value <span class="math notranslate nohighlight">\(p=2\)</span>,
 and <span class="math notranslate nohighlight">\(L(s,s^\prime)\)</span> is a suitable correcting factor computed by the transition kernel.</p>
 <p>The dtype of the sampled states can be chosen.</p>
