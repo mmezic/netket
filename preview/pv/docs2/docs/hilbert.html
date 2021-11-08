@@ -188,9 +188,10 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#the-discretehilbert-interface">The <code class="docutils literal notranslate"><span class="pre">DiscreteHilbert</span></code> interface</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#indexable-spaces">Indexable spaces</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#constrained-hilbert-spaces">Constrained Hilbert spaces</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#generating-uniform-samples">Generating uniform samples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#using-hilbert-spaces-with-jax-jitted-functions">Using Hilbert spaces with <span class="xref std std-ref">jax.jit</span>ted functions</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="varstate.html">The Variational State Interface</a><ul>
@@ -302,6 +303,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="api.html#hilbert">Hilbert</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="_generated/hilbert/netket.hilbert.AbstractHilbert.html">netket.hilbert.AbstractHilbert</a></li>
+<li class="toctree-l3"><a class="reference internal" href="_generated/hilbert/netket.hilbert.ContinuousHilbert.html">netket.hilbert.ContinuousHilbert</a></li>
 <li class="toctree-l3"><a class="reference internal" href="_generated/hilbert/netket.hilbert.DiscreteHilbert.html">netket.hilbert.DiscreteHilbert</a></li>
 <li class="toctree-l3"><a class="reference internal" href="_generated/hilbert/netket.hilbert.HomogeneousHilbert.html">netket.hilbert.HomogeneousHilbert</a></li>
 <li class="toctree-l3"><a class="reference internal" href="_generated/hilbert/netket.hilbert.CustomHilbert.html">netket.hilbert.CustomHilbert</a></li>
@@ -310,6 +312,7 @@
 <li class="toctree-l3"><a class="reference internal" href="_generated/hilbert/netket.hilbert.Spin.html">netket.hilbert.Spin</a></li>
 <li class="toctree-l3"><a class="reference internal" href="_generated/hilbert/netket.hilbert.Qubit.html">netket.hilbert.Qubit</a></li>
 <li class="toctree-l3"><a class="reference internal" href="_generated/hilbert/netket.hilbert.Fock.html">netket.hilbert.Fock</a></li>
+<li class="toctree-l3"><a class="reference internal" href="_generated/hilbert/netket.hilbert.Particle.html">netket.hilbert.Particle</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="api.html#operators">Operators</a><ul>
@@ -506,10 +509,12 @@ An <code class="docutils literal notranslate"><span class="pre">Hilbert</span></
 They are needed to construct most other objects in NetKet, but they can also be useful to experiment and validate variational ansätze.</p>
 <p>Hilbert space objects are all sub-classes of the abstract class <a class="reference internal" href="_generated/hilbert/netket.hilbert.AbstractHilbert.html#netket-hilbert-abstracthilbert"><span class="std std-ref">netket.hilbert.AbstractHilbert</span></a>, which defines the general API respected by all implementations.
 You can see a birds-eye of the inheritance diagram among the various kinds of Hilbert spaces included with NetKet below (you can click on the nodes in the graph to go to their API documentation page).</p>
-<div class="graphviz"><img src="../_images/inheritance-bc871a79e3a5e28462f6f6df0cc5c18ec8dc13b5.png" alt="Inheritance diagram of netket.hilbert" usemap="#inheritancea41024210a" class="inheritance graphviz" /></div>
+<div class="graphviz"><img src="../_images/inheritance-3e66fb3cd946dc673f4261f74cce0aaf0142d743.png" alt="Inheritance diagram of netket.hilbert" usemap="#inheritancea41024210a" class="inheritance graphviz" /></div>
 <map id="inheritancea41024210a" name="inheritancea41024210a">
 <area shape="rect" id="node1" href="_generated/hilbert/netket.hilbert.AbstractHilbert.html#netket.hilbert.AbstractHilbert" target="_top" title="Abstract class for NetKet hilbert objects." alt="" coords="5,92,125,117"/>
+<area shape="rect" id="node2" href="_generated/hilbert/netket.hilbert.ContinuousHilbert.html#netket.hilbert.ContinuousHilbert" target="_top" title="Abstract class for the Hilbert space of particles" alt="" coords="173,48,312,73"/>
 <area shape="rect" id="node5" href="_generated/hilbert/netket.hilbert.DiscreteHilbert.html#netket.hilbert.DiscreteHilbert" target="_top" title="Abstract class for an hilbert space defined on a lattice." alt="" coords="183,116,303,141"/>
+<area shape="rect" id="node8" href="_generated/hilbert/netket.hilbert.Particle.html#netket.hilbert.Particle" target="_top" title="Hilbert space derived from AbstractParticle for" alt="" coords="404,29,476,55"/>
 <area shape="rect" id="node3" href="_generated/hilbert/netket.hilbert.CustomHilbert.html#netket.hilbert.CustomHilbert" target="_top" title="A custom hilbert space with discrete local quantum numbers." alt="" coords="568,5,684,31"/>
 <area shape="rect" id="node4" href="_generated/hilbert/netket.hilbert.HomogeneousHilbert.html#netket.hilbert.HomogeneousHilbert" target="_top" title="The Abstract base class for homogeneous hilbert spaces." alt="" coords="360,79,520,104"/>
 <area shape="rect" id="node7" href="_generated/hilbert/netket.hilbert.Fock.html#netket.hilbert.Fock" target="_top" title="Hilbert space obtained as tensor product of local fock basis." alt="" coords="590,55,662,80"/>
@@ -518,7 +523,7 @@ You can see a birds-eye of the inheritance diagram among the various kinds of Hi
 <area shape="rect" id="node6" href="_generated/hilbert/netket.hilbert.DoubledHilbert.html#netket.hilbert.DoubledHilbert" target="_top" title="Superoperatorial hilbert space for states living in the tensorised state" alt="" coords="380,152,500,177"/>
 <area shape="rect" id="node11" href="_generated/hilbert/netket.hilbert.TensorHilbert.html#netket.hilbert.TensorHilbert" target="_top" title="Tensor product of several Discrete sub&#45;spaces, representing the space" alt="" coords="386,201,494,227"/>
 </map><p><a class="reference internal" href="_generated/hilbert/netket.hilbert.AbstractHilbert.html#netket-hilbert-abstracthilbert"><span class="std std-ref">netket.hilbert.AbstractHilbert</span></a> makes very few assumptions on the structure of the resulting space and you will generally very rarely interact with it directly.</p>
-<p>There are then two more abstract Hilbert space types: <a class="reference internal" href="_generated/hilbert/netket.hilbert.DiscreteHilbert.html#netket-hilbert-discretehilbert"><span class="std std-ref">netket.hilbert.DiscreteHilbert</span></a>, representing Hilbert spaces where the local degrees of freedom are countable, and <span class="xref std std-ref">netket.hilbert.ContinuousHilbert</span>, representing the Hilbert spaces with continuous bases, such as particles in a box.</p>
+<p>There are then two more abstract Hilbert space types: <a class="reference internal" href="_generated/hilbert/netket.hilbert.DiscreteHilbert.html#netket-hilbert-discretehilbert"><span class="std std-ref">netket.hilbert.DiscreteHilbert</span></a>, representing Hilbert spaces where the local degrees of freedom are countable, and <a class="reference internal" href="_generated/hilbert/netket.hilbert.ContinuousHilbert.html#netket-hilbert-continuoushilbert"><span class="std std-ref">netket.hilbert.ContinuousHilbert</span></a>, representing the Hilbert spaces with continuous bases, such as particles in a box.</p>
 <p>Those two abstract types are very different: <code class="docutils literal notranslate"><span class="pre">ContinuousHilbert</span></code> spaces are still experimental and we don’t support yet many ways to manipulate them, while <code class="docutils literal notranslate"><span class="pre">DiscreteHilbert</span></code> spaces are much more developed and offer many utilities and handy functionalities.</p>
 <p>The most important class of discrete Hilbert spaces are subclasses of <a class="reference internal" href="_generated/hilbert/netket.hilbert.HomogeneousHilbert.html#netket-hilbert-homogeneoushilbert"><span class="std std-ref">netket.hilbert.HomogeneousHilbert</span></a>, which is a space where the local degrees of freedom are identical among different sites. These subclasses are <a class="reference internal" href="_generated/hilbert/netket.hilbert.Fock.html#netket-hilbert-fock"><span class="std std-ref">netket.hilbert.Fock</span></a>, <a class="reference internal" href="_generated/hilbert/netket.hilbert.Spin.html#netket-hilbert-spin"><span class="std std-ref">netket.hilbert.Spin</span></a>, and <a class="reference internal" href="_generated/hilbert/netket.hilbert.Qubit.html#netket-hilbert-qubit"><span class="std std-ref">netket.hilbert.Qubit</span></a>.</p>
 <p><a class="reference internal" href="_generated/hilbert/netket.hilbert.TensorHilbert.html#netket-hilbert-tensorhilbert"><span class="std std-ref">netket.hilbert.TensorHilbert</span></a> represents tensor products of different homogeneous hilbert spaces, therefore it is not homogeneous. You can use it to represent composite systems such as spin-boson setups.</p>
@@ -542,7 +547,7 @@ To give an example: when working with Qubits we often take as the basis the <spa
 This is an integer that exposes how many degrees of freedom has the basis of the Hilbert space.
 For discrete spaces, this corresponds exactly to the number of sites (which is, e.g., the number of spins in a <code class="docutils literal notranslate"><span class="pre">Spin</span></code> Hilbert space).
 Therefore, elements of the basis of an <span class="math notranslate nohighlight">\(N\)</span> spin-<span class="math notranslate nohighlight">\(1/2\)</span> system are vectors in <span class="math notranslate nohighlight">\(\{-1,+1\}^N\)</span>, an <span class="math notranslate nohighlight">\(N-\)</span> dimensional space.</p>
-<p>As NetKet is a package focused on Monte Carlo calculations, we also need a way to generate random configurations from a given Hilbert space.
+<p>As NetKet is a package focused on Monte Carlo calculations, we also need a way to generate random configurations distributed uniformly from the basis of an Hilbert space.
 This can be achieved through the method <a class="reference internal" href="#netket.hilbert.AbstractHilbert.random_state" title="netket.hilbert.AbstractHilbert.random_state"><code class="xref py py-meth docutils literal notranslate"><span class="pre">random_state()</span></code></a>.</p>
 <dl class="py function">
 <dt id="netket.hilbert.AbstractHilbert.random_state">
@@ -679,41 +684,62 @@ For hilbert spaces with larger local dimensions, all the local states are iterat
 <p>Do notice that all those methods work with arrays too and will convert an array of <span class="math notranslate nohighlight">\(M\)</span> indices to a batch of states, that is, a matrix of size <span class="math notranslate nohighlight">\(M \times N\)</span>.</p>
 <p>Lastly, it is also possible to obtain the batch of all basis states with the <a class="reference internal" href="_generated/hilbert/netket.hilbert.DiscreteHilbert.html#netket.hilbert.DiscreteHilbert.all_states" title="netket.hilbert.DiscreteHilbert.all_states"><code class="xref py py-meth docutils literal notranslate"><span class="pre">all_states()</span></code></a> method.</p>
 </div>
+<div class="section" id="constrained-hilbert-spaces">
+<h3>Constrained Hilbert spaces<a class="headerlink" href="#constrained-hilbert-spaces" title="Permalink to this headline">¶</a></h3>
+<p>The Hilbert spaces provided by NetKet are compatible with some simple constraints.
+The constraints that can be imposed are quite ~constrained~ limited themselves: they can only act on the set of basis elements, for example by excluding those that do not satisfy a certain condition.</p>
+<div class="admonition-warning-common-error admonition">
+<p class="admonition-title">Warning: Common error</p>
+<p>When you define a constrained Hilbert space and you use it with a Markov-Chain sampler, the constraints guarantees that the initial state of the chain, generated through the <a class="reference internal" href="_generated/hilbert/netket.hilbert.DiscreteHilbert.html#netket.hilbert.DiscreteHilbert.random_state" title="netket.hilbert.DiscreteHilbert.random_state"><code class="xref py py-meth docutils literal notranslate"><span class="pre">random_state()</span></code></a> method, respects the constraint.</p>
+<p>However, <em>it is not guaranteed that a transition rule will respect the constraint.</em>
+In fact, built-in samplers are not aware of the constraints directly, even though some of can still be used effectively with constraints.</p>
+<p>A typical error is to use <span class="xref std std-ref">~netket.sampler.MetropolisLocal</span> with a constrained Hilbert space, such as a Fock space with a fixed number of particles.
+A simple workaround is to use <span class="xref std std-ref">~netket.sampler.MetropolisExchange</span>: as it exchanges the value on two different sites, it guarantees that the total number
+of particles is conserved, and therefore respects the constraint if it is correctly imposed at the initialization of the chain.</p>
+<p>In short: when working with constrained Hilbert spaces you have to take extra care when chosing your sampler. And if you have exotic constraints you will most likely need to define your own transition kernel. But don’t worry: it is very easy! (however nobody has yet written documentation for it. In the meantime, have a look at <a class="reference external" href="https://github.com/netket/netket/discussions/755#discussioncomment-858719">this discussion</a>)</p>
 </div>
-<div class="section" id="generating-uniform-samples">
-<h2>Generating uniform samples<a class="headerlink" href="#generating-uniform-samples" title="Permalink to this headline">¶</a></h2>
-<p>It is always possible to sample the basis set of an Hilbert space according to the uniform distribution.
-This can be done using the method <a class="reference internal" href="_generated/hilbert/netket.hilbert.DiscreteHilbert.html#netket.hilbert.DiscreteHilbert.random_state" title="netket.hilbert.DiscreteHilbert.random_state"><code class="xref py py-meth docutils literal notranslate"><span class="pre">random_state()</span></code></a>.
-This method behaves similarly to <span class="xref std std-ref">jax.random</span> generators: the first argument must be a valid <span class="xref std std-ref">jax.random.PRNGKey</span>,
-the second argument is an optional shape argument and the last one is the data type (dtype) of the output.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">key</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">PRNGKey</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">hi</span><span class="o">.</span><span class="n">random_state</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
-<span class="go">DeviceArray([0., 1., 0.], dtype=float32)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">hi</span><span class="o">.</span><span class="n">random_state</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
-<span class="go">DeviceArray([[0., 0., 0.],</span>
-<span class="go">             [1., 1., 1.],</span>
-<span class="go">             [0., 0., 1.]], dtype=float32)</span>
-
-<span class="go">```</span>
-
-<span class="go">The distribution respects</span>
-
-
-<span class="go">## Using Hilbert spaces with {ref}`jax.jit`ted functions</span>
-
-<span class="go">Hilbert spaces are immutable, hashable objects. </span>
-<span class="go">Their hash is computed by hashing their inner fields, determined by the internal {meth}`~netket.hilbert.DiscreteHilbert._attrs` method.</span>
-<span class="go">You can freely use `AbstractHilbert` objects inside of `jax.jit`ted functions as long as you specify that they are `static`.</span>
-
-<span class="go">All attributes and methods of Hilbert spaces can be freely used inside of a `jax.jit` block except for </span>
-<span class="go">{meth}`~netket.hilbert.DiscreteHilbert.states_to_numbers` and {meth}`~netket.hilbert.DiscreteHilbert.numbers_to_states`, because</span>
-<span class="go">they are written using {ref}`numpy` instead of jax.</span>
-
-<span class="go">In particular, `random_state` method can be used inside of jitted blocks, as it is written in jax, as long as you pass a valid jax </span>
-<span class="go">{ref}`jax.random.PRNGKey` object as the first argument.</span>
-
+<p>The constraints supported on the built-in hilbert spaces are:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="_generated/hilbert/netket.hilbert.Spin.html#netket.hilbert.Spin" title="netket.hilbert.Spin"><code class="xref py py-class docutils literal notranslate"><span class="pre">Spin</span></code></a> supports an optional keyword argument <code class="docutils literal notranslate"><span class="pre">total_sz</span></code> which can be used to impose a fixed total magnetization.
+The total magnetization of a basis element is defined as <span class="math notranslate nohighlight">\(\sum_i \sigma_i\)</span>. Be aware that this constraint is efficiently
+imposed when calling <code class="docutils literal notranslate"><span class="pre">random_state</span></code> only for spins-<span class="math notranslate nohighlight">\( S=1/2 \)</span>, while for larger values of <span class="math notranslate nohighlight">\( S \)</span> it is not efficient. This
+should not be a problem as long as you use this method just to initialise your markov chains.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">hi</span> <span class="o">=</span> <span class="n">nk</span><span class="o">.</span><span class="n">hilbert</span><span class="o">.</span><span class="n">Spin</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">total_sz</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">hi</span><span class="o">.</span><span class="n">all_states</span><span class="p">()</span>
+<span class="go">array([[-1., -1.,  1.,  1.],</span>
+<span class="go">       [-1.,  1., -1.,  1.],</span>
+<span class="go">       [-1.,  1.,  1., -1.],</span>
+<span class="go">       [ 1., -1., -1.,  1.],</span>
+<span class="go">       [ 1., -1.,  1., -1.],</span>
+<span class="go">       [ 1.,  1., -1., -1.]])</span>
 </pre></div>
 </div>
+<ul class="simple">
+<li><p><a class="reference internal" href="_generated/hilbert/netket.hilbert.Fock.html#netket.hilbert.Fock" title="netket.hilbert.Fock"><code class="xref py py-class docutils literal notranslate"><span class="pre">Fock</span></code></a> supports an optional keyword argument <code class="docutils literal notranslate"><span class="pre">n_particles</span></code> which can be used to impose a fixed total number of particles.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">hi</span> <span class="o">=</span> <span class="n">nk</span><span class="o">.</span><span class="n">hilbert</span><span class="o">.</span><span class="n">Fock</span><span class="p">(</span><span class="n">N</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">n_particles</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">hi</span><span class="o">.</span><span class="n">all_states</span><span class="p">()</span>
+<span class="go">array([[0., 2.],</span>
+<span class="go">       [1., 1.],</span>
+<span class="go">       [2., 0.]])</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>It is also possible to define a custom (Homogeneous) hilbert space with a custom constraint. To see how to do that, check the section…</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="using-hilbert-spaces-with-jax-jitted-functions">
+<h2>Using Hilbert spaces with <span class="xref std std-ref">jax.jit</span>ted functions<a class="headerlink" href="#using-hilbert-spaces-with-jax-jitted-functions" title="Permalink to this headline">¶</a></h2>
+<p>Hilbert spaces are immutable, hashable objects.
+Their hash is computed by hashing their inner fields, determined by the internal <code class="xref py py-meth docutils literal notranslate"><span class="pre">_attrs()</span></code> method.
+You can freely use <code class="docutils literal notranslate"><span class="pre">AbstractHilbert</span></code> objects inside of <code class="docutils literal notranslate"><span class="pre">jax.jit</span></code>ted functions as long as you specify that they are <code class="docutils literal notranslate"><span class="pre">static</span></code>.</p>
+<p>All attributes and methods of Hilbert spaces can be freely used inside of a <code class="docutils literal notranslate"><span class="pre">jax.jit</span></code> block except for
+<a class="reference internal" href="_generated/hilbert/netket.hilbert.DiscreteHilbert.html#netket.hilbert.DiscreteHilbert.states_to_numbers" title="netket.hilbert.DiscreteHilbert.states_to_numbers"><code class="xref py py-meth docutils literal notranslate"><span class="pre">states_to_numbers()</span></code></a> and <a class="reference internal" href="_generated/hilbert/netket.hilbert.DiscreteHilbert.html#netket.hilbert.DiscreteHilbert.numbers_to_states" title="netket.hilbert.DiscreteHilbert.numbers_to_states"><code class="xref py py-meth docutils literal notranslate"><span class="pre">numbers_to_states()</span></code></a>, because
+they are written using <span class="xref std std-ref">numpy</span> instead of jax.</p>
+<p>In particular the <a class="reference internal" href="_generated/hilbert/netket.hilbert.DiscreteHilbert.html#netket.hilbert.DiscreteHilbert.random_state" title="netket.hilbert.DiscreteHilbert.random_state"><code class="xref py py-meth docutils literal notranslate"><span class="pre">random_state()</span></code></a> method can be used inside of jitted blocks, as it is written in jax, as long as you pass a valid jax
+<span class="xref std std-ref">jax.random.PRNGKey</span> object as the first argument.</p>
 </div>
 </div>
 

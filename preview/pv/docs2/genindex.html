@@ -184,6 +184,8 @@
 </li>
         <li><a href="docs/_generated/graph/netket.graph.Lattice.html#netket.graph.Lattice.__init__">(netket.graph.Lattice method)</a>
 </li>
+        <li><a href="docs/_generated/hilbert/netket.hilbert.ContinuousHilbert.html#netket.hilbert.ContinuousHilbert.__init__">(netket.hilbert.ContinuousHilbert method)</a>
+</li>
         <li><a href="docs/_generated/hilbert/netket.hilbert.CustomHilbert.html#netket.hilbert.CustomHilbert.__init__">(netket.hilbert.CustomHilbert method)</a>
 </li>
         <li><a href="docs/_generated/hilbert/netket.hilbert.DiscreteHilbert.html#netket.hilbert.DiscreteHilbert.__init__">(netket.hilbert.DiscreteHilbert method)</a>
@@ -193,6 +195,8 @@
         <li><a href="docs/_generated/hilbert/netket.hilbert.Fock.html#netket.hilbert.Fock.__init__">(netket.hilbert.Fock method)</a>
 </li>
         <li><a href="docs/_generated/hilbert/netket.hilbert.HomogeneousHilbert.html#netket.hilbert.HomogeneousHilbert.__init__">(netket.hilbert.HomogeneousHilbert method)</a>
+</li>
+        <li><a href="docs/_generated/hilbert/netket.hilbert.Particle.html#netket.hilbert.Particle.__init__">(netket.hilbert.Particle method)</a>
 </li>
         <li><a href="docs/_generated/hilbert/netket.hilbert.Qubit.html#netket.hilbert.Qubit.__init__">(netket.hilbert.Qubit method)</a>
 </li>
@@ -613,6 +617,8 @@
         <li><a href="docs/_generated/hilbert/netket.hilbert.Spin.html#netket.hilbert.Spin.constrained">(netket.hilbert.Spin attribute)</a>
 </li>
       </ul></li>
+      <li><a href="docs/_generated/hilbert/netket.hilbert.ContinuousHilbert.html#netket.hilbert.ContinuousHilbert">ContinuousHilbert (class in netket.hilbert)</a>
+</li>
       <li><a href="docs/_generated/nn/netket.nn.Conv.html#netket.nn.Conv">Conv (class in netket.nn)</a>
 </li>
       <li><a href="docs/_generated/graph/netket.graph.Lattice.html#netket.graph.Lattice.coordinates">coordinates (netket.graph.Lattice attribute)</a>
@@ -792,7 +798,13 @@
       <li><a href="docs/_generated/variational/netket.vqs.MCMixedState.html#netket.vqs.MCMixedState.expect_and_grad_operator">expect_and_grad_operator() (netket.vqs.MCMixedState method)</a>
 </li>
       <li><a href="docs/_generated/graph/netket.graph.Lattice.html#netket.graph.Lattice.extent">extent (netket.graph.Lattice attribute)</a>
+
+      <ul>
+        <li><a href="docs/_generated/hilbert/netket.hilbert.ContinuousHilbert.html#netket.hilbert.ContinuousHilbert.extent">(netket.hilbert.ContinuousHilbert attribute)</a>
 </li>
+        <li><a href="docs/_generated/hilbert/netket.hilbert.Particle.html#netket.hilbert.Particle.extent">(netket.hilbert.Particle attribute)</a>
+</li>
+      </ul></li>
   </ul></td>
 </tr></table>
 
@@ -1230,6 +1242,8 @@
       <li><a href="docs/_generated/hilbert/netket.hilbert.AbstractHilbert.html#netket.hilbert.AbstractHilbert.is_indexable">is_indexable (netket.hilbert.AbstractHilbert attribute)</a>
 
       <ul>
+        <li><a href="docs/_generated/hilbert/netket.hilbert.ContinuousHilbert.html#netket.hilbert.ContinuousHilbert.is_indexable">(netket.hilbert.ContinuousHilbert attribute)</a>
+</li>
         <li><a href="docs/_generated/hilbert/netket.hilbert.CustomHilbert.html#netket.hilbert.CustomHilbert.is_indexable">(netket.hilbert.CustomHilbert attribute)</a>
 </li>
         <li><a href="docs/_generated/hilbert/netket.hilbert.DiscreteHilbert.html#netket.hilbert.DiscreteHilbert.is_indexable">(netket.hilbert.DiscreteHilbert attribute)</a>
@@ -1239,6 +1253,8 @@
         <li><a href="docs/_generated/hilbert/netket.hilbert.Fock.html#netket.hilbert.Fock.is_indexable">(netket.hilbert.Fock attribute)</a>
 </li>
         <li><a href="docs/_generated/hilbert/netket.hilbert.HomogeneousHilbert.html#netket.hilbert.HomogeneousHilbert.is_indexable">(netket.hilbert.HomogeneousHilbert attribute)</a>
+</li>
+        <li><a href="docs/_generated/hilbert/netket.hilbert.Particle.html#netket.hilbert.Particle.is_indexable">(netket.hilbert.Particle attribute)</a>
 </li>
         <li><a href="docs/_generated/hilbert/netket.hilbert.Qubit.html#netket.hilbert.Qubit.is_indexable">(netket.hilbert.Qubit attribute)</a>
 </li>
@@ -1687,8 +1703,6 @@
         <li><a href="docs/_generated/operator/netket.operator.LocalOperator.html#netket.operator.LocalOperator.n_operators">(netket.operator.LocalOperator attribute)</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="docs/_generated/variational/netket.vqs.MCMixedState.html#netket.vqs.MCMixedState.n_parameters">n_parameters (netket.vqs.MCMixedState attribute)</a>
 
       <ul>
@@ -1697,8 +1711,14 @@
         <li><a href="docs/_generated/variational/netket.vqs.VariationalState.html#netket.vqs.VariationalState.n_parameters">(netket.vqs.VariationalState attribute)</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="docs/_generated/hilbert/netket.hilbert.Fock.html#netket.hilbert.Fock.n_particles">n_particles (netket.hilbert.Fock attribute)</a>
+
+      <ul>
+        <li><a href="docs/_generated/hilbert/netket.hilbert.Particle.html#netket.hilbert.Particle.n_particles">(netket.hilbert.Particle attribute)</a>
 </li>
+      </ul></li>
       <li><a href="docs/_generated/samplers/netket.sampler.MetropolisPtSampler.html#netket.sampler.MetropolisPtSampler.n_replicas">n_replicas (netket.sampler.MetropolisPtSampler attribute)</a>
 </li>
       <li><a href="docs/_generated/variational/netket.vqs.MCMixedState.html#netket.vqs.MCMixedState.n_samples">n_samples (netket.vqs.MCMixedState attribute)</a>
@@ -1869,12 +1889,20 @@
         <li><a href="docs/_generated/nn/netket.nn.MaskedDense1D.html#netket.nn.MaskedDense1D.parent">(netket.nn.MaskedDense1D attribute)</a>
 </li>
       </ul></li>
+      <li><a href="docs/_generated/hilbert/netket.hilbert.Particle.html#netket.hilbert.Particle">Particle (class in netket.hilbert)</a>
+</li>
       <li><a href="docs/_generated/callbacks/netket.callbacks.EarlyStopping.html#netket.callbacks.EarlyStopping.patience">patience (netket.callbacks.EarlyStopping attribute)</a>
 </li>
       <li><a href="docs/_generated/operator/netket.operator.PauliStrings.html#netket.operator.PauliStrings">PauliStrings (class in netket.operator)</a>
 </li>
       <li><a href="docs/_generated/graph/netket.graph.Lattice.html#netket.graph.Lattice.pbc">pbc (netket.graph.Lattice attribute)</a>
+
+      <ul>
+        <li><a href="docs/_generated/hilbert/netket.hilbert.ContinuousHilbert.html#netket.hilbert.ContinuousHilbert.pbc">(netket.hilbert.ContinuousHilbert attribute)</a>
 </li>
+        <li><a href="docs/_generated/hilbert/netket.hilbert.Particle.html#netket.hilbert.Particle.pbc">(netket.hilbert.Particle attribute)</a>
+</li>
+      </ul></li>
       <li><a href="docs/_generated/graph/netket.graph.Lattice.html#netket.graph.Lattice.point_group">point_group() (netket.graph.Lattice method)</a>
 </li>
       <li><a href="docs/_generated/graph/netket.graph.Lattice.html#netket.graph.Lattice.position_from_basis_coords">position_from_basis_coords() (netket.graph.Lattice method)</a>
@@ -1922,6 +1950,8 @@
       <li><a href="docs/_generated/hilbert/netket.hilbert.AbstractHilbert.html#netket.hilbert.AbstractHilbert.ptrace">ptrace() (netket.hilbert.AbstractHilbert method)</a>
 
       <ul>
+        <li><a href="docs/_generated/hilbert/netket.hilbert.ContinuousHilbert.html#netket.hilbert.ContinuousHilbert.ptrace">(netket.hilbert.ContinuousHilbert method)</a>
+</li>
         <li><a href="docs/_generated/hilbert/netket.hilbert.CustomHilbert.html#netket.hilbert.CustomHilbert.ptrace">(netket.hilbert.CustomHilbert method)</a>
 </li>
         <li><a href="docs/_generated/hilbert/netket.hilbert.DiscreteHilbert.html#netket.hilbert.DiscreteHilbert.ptrace">(netket.hilbert.DiscreteHilbert method)</a>
@@ -1931,6 +1961,8 @@
         <li><a href="docs/_generated/hilbert/netket.hilbert.Fock.html#netket.hilbert.Fock.ptrace">(netket.hilbert.Fock method)</a>
 </li>
         <li><a href="docs/_generated/hilbert/netket.hilbert.HomogeneousHilbert.html#netket.hilbert.HomogeneousHilbert.ptrace">(netket.hilbert.HomogeneousHilbert method)</a>
+</li>
+        <li><a href="docs/_generated/hilbert/netket.hilbert.Particle.html#netket.hilbert.Particle.ptrace">(netket.hilbert.Particle method)</a>
 </li>
         <li><a href="docs/_generated/hilbert/netket.hilbert.Qubit.html#netket.hilbert.Qubit.ptrace">(netket.hilbert.Qubit method)</a>
 </li>
@@ -1976,6 +2008,8 @@
       <ul>
         <li><a href="docs/_generated/hilbert/netket.hilbert.AbstractHilbert.html#netket.hilbert.AbstractHilbert.random_state">(netket.hilbert.AbstractHilbert method)</a>
 </li>
+        <li><a href="docs/_generated/hilbert/netket.hilbert.ContinuousHilbert.html#netket.hilbert.ContinuousHilbert.random_state">(netket.hilbert.ContinuousHilbert method)</a>
+</li>
         <li><a href="docs/_generated/hilbert/netket.hilbert.CustomHilbert.html#netket.hilbert.CustomHilbert.random_state">(netket.hilbert.CustomHilbert method)</a>
 </li>
         <li><a href="docs/_generated/hilbert/netket.hilbert.DiscreteHilbert.html#netket.hilbert.DiscreteHilbert.random_state">(netket.hilbert.DiscreteHilbert method)</a>
@@ -1985,6 +2019,8 @@
         <li><a href="docs/_generated/hilbert/netket.hilbert.Fock.html#netket.hilbert.Fock.random_state">(netket.hilbert.Fock method)</a>
 </li>
         <li><a href="docs/_generated/hilbert/netket.hilbert.HomogeneousHilbert.html#netket.hilbert.HomogeneousHilbert.random_state">(netket.hilbert.HomogeneousHilbert method)</a>
+</li>
+        <li><a href="docs/_generated/hilbert/netket.hilbert.Particle.html#netket.hilbert.Particle.random_state">(netket.hilbert.Particle method)</a>
 </li>
         <li><a href="docs/_generated/hilbert/netket.hilbert.Qubit.html#netket.hilbert.Qubit.random_state">(netket.hilbert.Qubit method)</a>
 </li>
@@ -2262,6 +2298,8 @@
       <li><a href="docs/_generated/hilbert/netket.hilbert.AbstractHilbert.html#netket.hilbert.AbstractHilbert.size">size (netket.hilbert.AbstractHilbert attribute)</a>
 
       <ul>
+        <li><a href="docs/_generated/hilbert/netket.hilbert.ContinuousHilbert.html#netket.hilbert.ContinuousHilbert.size">(netket.hilbert.ContinuousHilbert attribute)</a>
+</li>
         <li><a href="docs/_generated/hilbert/netket.hilbert.CustomHilbert.html#netket.hilbert.CustomHilbert.size">(netket.hilbert.CustomHilbert attribute)</a>
 </li>
         <li><a href="docs/_generated/hilbert/netket.hilbert.DiscreteHilbert.html#netket.hilbert.DiscreteHilbert.size">(netket.hilbert.DiscreteHilbert attribute)</a>
@@ -2271,6 +2309,8 @@
         <li><a href="docs/_generated/hilbert/netket.hilbert.Fock.html#netket.hilbert.Fock.size">(netket.hilbert.Fock attribute)</a>
 </li>
         <li><a href="docs/_generated/hilbert/netket.hilbert.HomogeneousHilbert.html#netket.hilbert.HomogeneousHilbert.size">(netket.hilbert.HomogeneousHilbert attribute)</a>
+</li>
+        <li><a href="docs/_generated/hilbert/netket.hilbert.Particle.html#netket.hilbert.Particle.size">(netket.hilbert.Particle attribute)</a>
 </li>
         <li><a href="docs/_generated/hilbert/netket.hilbert.Qubit.html#netket.hilbert.Qubit.size">(netket.hilbert.Qubit attribute)</a>
 </li>

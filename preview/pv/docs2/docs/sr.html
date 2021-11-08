@@ -188,9 +188,10 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="hilbert.html#the-discretehilbert-interface">The <code class="docutils literal notranslate"><span class="pre">DiscreteHilbert</span></code> interface</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="hilbert.html#indexable-spaces">Indexable spaces</a></li>
+<li class="toctree-l3"><a class="reference internal" href="hilbert.html#constrained-hilbert-spaces">Constrained Hilbert spaces</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="hilbert.html#generating-uniform-samples">Generating uniform samples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hilbert.html#using-hilbert-spaces-with-jax-jitted-functions">Using Hilbert spaces with <span class="xref std std-ref">jax.jit</span>ted functions</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="varstate.html">The Variational State Interface</a><ul>
@@ -302,6 +303,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="api.html#hilbert">Hilbert</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="_generated/hilbert/netket.hilbert.AbstractHilbert.html">netket.hilbert.AbstractHilbert</a></li>
+<li class="toctree-l3"><a class="reference internal" href="_generated/hilbert/netket.hilbert.ContinuousHilbert.html">netket.hilbert.ContinuousHilbert</a></li>
 <li class="toctree-l3"><a class="reference internal" href="_generated/hilbert/netket.hilbert.DiscreteHilbert.html">netket.hilbert.DiscreteHilbert</a></li>
 <li class="toctree-l3"><a class="reference internal" href="_generated/hilbert/netket.hilbert.HomogeneousHilbert.html">netket.hilbert.HomogeneousHilbert</a></li>
 <li class="toctree-l3"><a class="reference internal" href="_generated/hilbert/netket.hilbert.CustomHilbert.html">netket.hilbert.CustomHilbert</a></li>
@@ -310,6 +312,7 @@
 <li class="toctree-l3"><a class="reference internal" href="_generated/hilbert/netket.hilbert.Spin.html">netket.hilbert.Spin</a></li>
 <li class="toctree-l3"><a class="reference internal" href="_generated/hilbert/netket.hilbert.Qubit.html">netket.hilbert.Qubit</a></li>
 <li class="toctree-l3"><a class="reference internal" href="_generated/hilbert/netket.hilbert.Fock.html">netket.hilbert.Fock</a></li>
+<li class="toctree-l3"><a class="reference internal" href="_generated/hilbert/netket.hilbert.Particle.html">netket.hilbert.Particle</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="api.html#operators">Operators</a><ul>
@@ -554,19 +557,19 @@ If you work with NetKet and determine that a particular implementation works bes
 The derivation in the case of a variational optimization for the ground state, can be sketched as follows:</p>
 <p>Given a a variational wavefunction <span class="math notranslate nohighlight">\( \ket{\psi_W} \)</span>, we consider its first order Taylor expansion around <span class="math notranslate nohighlight">\( W \)</span>, <span class="math notranslate nohighlight">\( \ket{\psi_{W+\delta W}} = \ket{\psi_W} + \delta W_k \hat{O}_k \ket{\psi_W} \)</span>, where <span class="math notranslate nohighlight">\( \bra{\sigma}\hat{O}_k \ket{\eta} = \delta_{\sigma,\eta} \frac{d \log\psi_W(\sigma)}{dW_k}\)</span>.
 We wish to determine the updates <span class="math notranslate nohighlight">\( \delta_{\sigma,\eta} \)</span> of the variational parameters that match a step of imaginary-time evolution, given by</p>
-<div class="amsmath math notranslate nohighlight" id="equation-823d1c18-acd7-406a-9183-9271285bb7f5">
-<span class="eqno">(1)<a class="headerlink" href="#equation-823d1c18-acd7-406a-9183-9271285bb7f5" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-25f1311a-063e-4873-a5b7-899199057dce">
+<span class="eqno">(1)<a class="headerlink" href="#equation-25f1311a-063e-4873-a5b7-899199057dce" title="Permalink to this equation">¶</a></span>\[\begin{equation}
 \ket{\phi} = U(\epsilon)\ket{\psi_W} = e^{\epsilon\hat{H}}\ket{\psi_W} \sim (\mathbb{I} - \epsilon \hat{H})\ket{\psi_W}
 \end{equation}\]</div>
 <p>It is possible to show that the updates <span class="math notranslate nohighlight">\(\delta W_k \)</span> that minimise the norm of the state <span class="math notranslate nohighlight">\(\ket{\phi}-\ket{\psi_{W+\delta W}}\)</span> can be determined by solving the linear system</p>
-<div class="amsmath math notranslate nohighlight" id="equation-8f76f4ed-9546-4cb9-a1ec-fbd353c72850">
-<span class="eqno">(2)<a class="headerlink" href="#equation-8f76f4ed-9546-4cb9-a1ec-fbd353c72850" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-5d22661b-5e86-4b40-81bd-89c7f02cab5b">
+<span class="eqno">(2)<a class="headerlink" href="#equation-5d22661b-5e86-4b40-81bd-89c7f02cab5b" title="Permalink to this equation">¶</a></span>\[\begin{equation}
 S_{i,k} \delta W_k = F_i
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\( F_i = \langle \hat{E}^{loc} \hat{O}_i\rangle_c \)</span> is the gradient of the Energy and <span class="math notranslate nohighlight">\( S_{i,k} = \langle \hat{O}^\dagger_i \hat{O}_k\rangle_c \)</span> is the Quantum Geometric Tensor.
 The QGT is positive definite, therefore it can be inverted and the solution is formally written as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-f6740b0d-cf00-4f84-8eca-7c05fdd7492c">
-<span class="eqno">(3)<a class="headerlink" href="#equation-f6740b0d-cf00-4f84-8eca-7c05fdd7492c" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-82e43fc7-667e-4c6e-a203-e65c2706b060">
+<span class="eqno">(3)<a class="headerlink" href="#equation-82e43fc7-667e-4c6e-a203-e65c2706b060" title="Permalink to this equation">¶</a></span>\[\begin{equation}
 \bf{\delta W} = S^{-1} \bf{F},
 \end{equation}\]</div>
 <p>where bold fonts are used for vectors.

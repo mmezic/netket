@@ -188,9 +188,10 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="hilbert.html#the-discretehilbert-interface">The <code class="docutils literal notranslate"><span class="pre">DiscreteHilbert</span></code> interface</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="hilbert.html#indexable-spaces">Indexable spaces</a></li>
+<li class="toctree-l3"><a class="reference internal" href="hilbert.html#constrained-hilbert-spaces">Constrained Hilbert spaces</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="hilbert.html#generating-uniform-samples">Generating uniform samples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hilbert.html#using-hilbert-spaces-with-jax-jitted-functions">Using Hilbert spaces with <span class="xref std std-ref">jax.jit</span>ted functions</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="varstate.html">The Variational State Interface</a><ul>
@@ -302,6 +303,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#hilbert">Hilbert</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="_generated/hilbert/netket.hilbert.AbstractHilbert.html">netket.hilbert.AbstractHilbert</a></li>
+<li class="toctree-l3"><a class="reference internal" href="_generated/hilbert/netket.hilbert.ContinuousHilbert.html">netket.hilbert.ContinuousHilbert</a></li>
 <li class="toctree-l3"><a class="reference internal" href="_generated/hilbert/netket.hilbert.DiscreteHilbert.html">netket.hilbert.DiscreteHilbert</a></li>
 <li class="toctree-l3"><a class="reference internal" href="_generated/hilbert/netket.hilbert.HomogeneousHilbert.html">netket.hilbert.HomogeneousHilbert</a></li>
 <li class="toctree-l3"><a class="reference internal" href="_generated/hilbert/netket.hilbert.CustomHilbert.html">netket.hilbert.CustomHilbert</a></li>
@@ -310,6 +312,7 @@
 <li class="toctree-l3"><a class="reference internal" href="_generated/hilbert/netket.hilbert.Spin.html">netket.hilbert.Spin</a></li>
 <li class="toctree-l3"><a class="reference internal" href="_generated/hilbert/netket.hilbert.Qubit.html">netket.hilbert.Qubit</a></li>
 <li class="toctree-l3"><a class="reference internal" href="_generated/hilbert/netket.hilbert.Fock.html">netket.hilbert.Fock</a></li>
+<li class="toctree-l3"><a class="reference internal" href="_generated/hilbert/netket.hilbert.Particle.html">netket.hilbert.Particle</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#operators">Operators</a><ul>
@@ -547,29 +550,35 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="_generated/hilbert/netket.hilbert.AbstractHilbert.html#netket.hilbert.AbstractHilbert" title="netket.hilbert.AbstractHilbert"><code class="xref py py-obj docutils literal notranslate"><span class="pre">netket.hilbert.AbstractHilbert</span></code></a></p></td>
 <td><p>Abstract class for NetKet hilbert objects.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="_generated/hilbert/netket.hilbert.DiscreteHilbert.html#netket.hilbert.DiscreteHilbert" title="netket.hilbert.DiscreteHilbert"><code class="xref py py-obj docutils literal notranslate"><span class="pre">netket.hilbert.DiscreteHilbert</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="_generated/hilbert/netket.hilbert.ContinuousHilbert.html#netket.hilbert.ContinuousHilbert" title="netket.hilbert.ContinuousHilbert"><code class="xref py py-obj docutils literal notranslate"><span class="pre">netket.hilbert.ContinuousHilbert</span></code></a></p></td>
+<td><p>Abstract class for the Hilbert space of particles in continuous space.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="_generated/hilbert/netket.hilbert.DiscreteHilbert.html#netket.hilbert.DiscreteHilbert" title="netket.hilbert.DiscreteHilbert"><code class="xref py py-obj docutils literal notranslate"><span class="pre">netket.hilbert.DiscreteHilbert</span></code></a></p></td>
 <td><p>Abstract class for an hilbert space defined on a lattice.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="_generated/hilbert/netket.hilbert.HomogeneousHilbert.html#netket.hilbert.HomogeneousHilbert" title="netket.hilbert.HomogeneousHilbert"><code class="xref py py-obj docutils literal notranslate"><span class="pre">netket.hilbert.HomogeneousHilbert</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="_generated/hilbert/netket.hilbert.HomogeneousHilbert.html#netket.hilbert.HomogeneousHilbert" title="netket.hilbert.HomogeneousHilbert"><code class="xref py py-obj docutils literal notranslate"><span class="pre">netket.hilbert.HomogeneousHilbert</span></code></a></p></td>
 <td><p>The Abstract base class for homogeneous hilbert spaces.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="_generated/hilbert/netket.hilbert.CustomHilbert.html#netket.hilbert.CustomHilbert" title="netket.hilbert.CustomHilbert"><code class="xref py py-obj docutils literal notranslate"><span class="pre">netket.hilbert.CustomHilbert</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="_generated/hilbert/netket.hilbert.CustomHilbert.html#netket.hilbert.CustomHilbert" title="netket.hilbert.CustomHilbert"><code class="xref py py-obj docutils literal notranslate"><span class="pre">netket.hilbert.CustomHilbert</span></code></a></p></td>
 <td><p>A custom hilbert space with discrete local quantum numbers.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="_generated/hilbert/netket.hilbert.TensorHilbert.html#netket.hilbert.TensorHilbert" title="netket.hilbert.TensorHilbert"><code class="xref py py-obj docutils literal notranslate"><span class="pre">netket.hilbert.TensorHilbert</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="_generated/hilbert/netket.hilbert.TensorHilbert.html#netket.hilbert.TensorHilbert" title="netket.hilbert.TensorHilbert"><code class="xref py py-obj docutils literal notranslate"><span class="pre">netket.hilbert.TensorHilbert</span></code></a></p></td>
 <td><p>Tensor product of several Discrete sub-spaces, representing the space</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="_generated/hilbert/netket.hilbert.DoubledHilbert.html#netket.hilbert.DoubledHilbert" title="netket.hilbert.DoubledHilbert"><code class="xref py py-obj docutils literal notranslate"><span class="pre">netket.hilbert.DoubledHilbert</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="_generated/hilbert/netket.hilbert.DoubledHilbert.html#netket.hilbert.DoubledHilbert" title="netket.hilbert.DoubledHilbert"><code class="xref py py-obj docutils literal notranslate"><span class="pre">netket.hilbert.DoubledHilbert</span></code></a></p></td>
 <td><p>Superoperatorial hilbert space for states living in the tensorised state <span class="math notranslate nohighlight">\(\hat{H}\otimes \hat{H}\)</span>, encoded according to Choi’s isomorphism.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="_generated/hilbert/netket.hilbert.Spin.html#netket.hilbert.Spin" title="netket.hilbert.Spin"><code class="xref py py-obj docutils literal notranslate"><span class="pre">netket.hilbert.Spin</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="_generated/hilbert/netket.hilbert.Spin.html#netket.hilbert.Spin" title="netket.hilbert.Spin"><code class="xref py py-obj docutils literal notranslate"><span class="pre">netket.hilbert.Spin</span></code></a></p></td>
 <td><p>Hilbert space obtained as tensor product of local spin states.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="_generated/hilbert/netket.hilbert.Qubit.html#netket.hilbert.Qubit" title="netket.hilbert.Qubit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">netket.hilbert.Qubit</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="_generated/hilbert/netket.hilbert.Qubit.html#netket.hilbert.Qubit" title="netket.hilbert.Qubit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">netket.hilbert.Qubit</span></code></a></p></td>
 <td><p>Hilbert space obtained as tensor product of local qubit states.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="_generated/hilbert/netket.hilbert.Fock.html#netket.hilbert.Fock" title="netket.hilbert.Fock"><code class="xref py py-obj docutils literal notranslate"><span class="pre">netket.hilbert.Fock</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="_generated/hilbert/netket.hilbert.Fock.html#netket.hilbert.Fock" title="netket.hilbert.Fock"><code class="xref py py-obj docutils literal notranslate"><span class="pre">netket.hilbert.Fock</span></code></a></p></td>
 <td><p>Hilbert space obtained as tensor product of local fock basis.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="_generated/hilbert/netket.hilbert.Particle.html#netket.hilbert.Particle" title="netket.hilbert.Particle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">netket.hilbert.Particle</span></code></a></p></td>
+<td><p>Hilbert space derived from AbstractParticle for Fermions.</p></td>
 </tr>
 </tbody>
 </table>
