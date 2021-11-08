@@ -493,6 +493,7 @@
 <h3>New features<a class="headerlink" href="#new-features" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">Heisenberg</span></code> Hamiltonians support different coupling strengths on <code class="docutils literal notranslate"><span class="pre">Graph</span></code> edges with different colors. <a class="reference external" href="https://github.com/netket/netket/pull/972">#972</a>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">GraphOperator</span></code> (and <code class="docutils literal notranslate"><span class="pre">Heisenberg</span></code>) now support passing a custom mapping of graph nodes to Hilbert space sites via the new <code class="docutils literal notranslate"><span class="pre">acting_on_subspace</span></code> argument. This makes it possible to create <code class="docutils literal notranslate"><span class="pre">GraphOperator</span></code>s that act on a subset of configurations, which is useful in composite Hilbert spaces. <a class="reference external" href="https://github.com/netket/netket/pull/924">#924</a></p></li>
 </ul>
 </div>
 <div class="section" id="breaking-changes">
