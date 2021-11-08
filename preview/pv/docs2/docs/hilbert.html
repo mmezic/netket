@@ -189,6 +189,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#the-discretehilbert-interface">The <code class="docutils literal notranslate"><span class="pre">DiscreteHilbert</span></code> interface</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#indexable-spaces">Indexable spaces</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#constrained-hilbert-spaces">Constrained Hilbert spaces</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#defining-custom-constraints">Defining Custom constraints</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#using-hilbert-spaces-with-jax-jitted-functions">Using Hilbert spaces with <span class="xref std std-ref">jax.jit</span>ted functions</a></li>
@@ -589,8 +590,9 @@ hilbert space.</p>
 
 <p><code class="docutils literal notranslate"><span class="pre">random_state</span></code> behaves similarly to <a href="#id1"><span class="problematic" id="id2">:fun:`jax.random.uniform`</span></a>: the first argument is a Jax PRNGKey, the second is the shape or number of resulting elements and the third is the dtype of the output (which defaults to <code class="docutils literal notranslate"><span class="pre">jnp.float32</span></code>, or single precision.
 The resulting basis elements will be distributed uniformly.</p>
-<div class="highlight-note notranslate"><div class="highlight"><pre><span></span>If you are not familiar with Jax random number generators: Jax PRNGKey is the state of the Pseudo-random number generator, that determines what will be the next random numbers generated. To learn more about it, refer to [this documentation](https://jax.readthedocs.io/en/latest/jax.random.html)).
-</pre></div>
+<div class="admonition-jax-prng admonition">
+<p class="admonition-title">Jax PRNG</p>
+<p>If you are not familiar with Jax random number generators: Jax PRNGKey is the state of the Pseudo-random number generator, that determines what will be the next random numbers generated. To learn more about it, refer to <a class="reference external" href="https://jax.readthedocs.io/en/latest/jax.random.html">this documentation</a>).</p>
 </div>
 </div>
 <div class="section" id="composing-hilbert-spaces">
@@ -634,7 +636,7 @@ For example, on the first four sites of the example above, the basis elements ar
 <span class="go">96</span>
 </pre></div>
 </div>
-<p>Do bear in mind that this attribute only works if the hilbert space is indexable (<a class="reference internal" href="_generated/hilbert/netket.hilbert.DiscreteHilbert.html#netket.hilbert.DiscreteHilbert.is_indexable" title="netket.hilbert.DiscreteHilbert.is_indexable"><code class="xref py py-attr docutils literal notranslate"><span class="pre">is_indexable</span></code></a>), which is True when it has a size smaller than <span class="math notranslate nohighlight">\(2^{64}\)</span>.</p>
+<p>Do bear in mind that this attribute only works if the hilbert space is indexable (<a class="reference internal" href="_generated/hilbert/netket.hilbert.DiscreteHilbert.html#netket.hilbert.DiscreteHilbert.is_indexable" title="netket.hilbert.DiscreteHilbert.is_indexable"><code class="xref py py-attr docutils literal notranslate"><span class="pre">is_indexable</span></code></a>), which is True when it has a size smaller than <span class="math notranslate nohighlight">\( 2^{64} \)</span>.</p>
 <p>NetKet also supports discrete-but-infinite hilbert spaces, such as Fock spaces with no cutoff.
 Those hilbert spaces are of course not indexable (<a class="reference internal" href="_generated/hilbert/netket.hilbert.DiscreteHilbert.html#netket.hilbert.DiscreteHilbert.is_indexable" title="netket.hilbert.DiscreteHilbert.is_indexable"><code class="xref py py-attr docutils literal notranslate"><span class="pre">is_indexable</span></code></a> will return <code class="docutils literal notranslate"><span class="pre">False</span></code>) and they are further signaled by the attribute (<a class="reference internal" href="_generated/hilbert/netket.hilbert.DiscreteHilbert.html#netket.hilbert.DiscreteHilbert.is_finite" title="netket.hilbert.DiscreteHilbert.is_finite"><code class="xref py py-attr docutils literal notranslate"><span class="pre">is_finite</span></code></a>, which will be set to <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
 <p>The only non-finite (discrete) hilbert space implemented in NetKet is the Fock space, and it can be constructed by not specifying the cutoff, as shown below:</p>
@@ -646,7 +648,7 @@ Those hilbert spaces are of course not indexable (<a class="reference internal" 
 <span class="go">Fock(n_max=INT_MAX, N=3)</span>
 </pre></div>
 </div>
-<p>Do bear in mind that due to computational limitations, <em>infinite</em> Hilbert spaces are not technically infinite, but simply have their cutoff set to <code class="docutils literal notranslate"><span class="pre">2^{63}</span></code>, the largest signed integer.</p>
+<p>Do bear in mind that due to computational limitations, <em>infinite</em> Hilbert spaces are not technically infinite, but simply have their cutoff set to <span class="math notranslate nohighlight">\( 2^{63} \)</span>, the largest signed integer.</p>
 <div class="section" id="indexable-spaces">
 <h3>Indexable spaces<a class="headerlink" href="#indexable-spaces" title="Permalink to this headline">¶</a></h3>
 <p>If a space is indexable it is possible to perform several handy operations on it, especially useful when you are checking the correctness of your calculations.
@@ -688,13 +690,14 @@ For hilbert spaces with larger local dimensions, all the local states are iterat
 <h3>Constrained Hilbert spaces<a class="headerlink" href="#constrained-hilbert-spaces" title="Permalink to this headline">¶</a></h3>
 <p>The Hilbert spaces provided by NetKet are compatible with some simple constraints.
 The constraints that can be imposed are quite ~constrained~ limited themselves: they can only act on the set of basis elements, for example by excluding those that do not satisfy a certain condition.</p>
-<div class="admonition-warning-common-error admonition">
-<p class="admonition-title">Warning: Common error</p>
-<p>When you define a constrained Hilbert space and you use it with a Markov-Chain sampler, the constraints guarantees that the initial state of the chain, generated through the <a class="reference internal" href="_generated/hilbert/netket.hilbert.DiscreteHilbert.html#netket.hilbert.DiscreteHilbert.random_state" title="netket.hilbert.DiscreteHilbert.random_state"><code class="xref py py-meth docutils literal notranslate"><span class="pre">random_state()</span></code></a> method, respects the constraint.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Warning: Common error
+When you define a constrained Hilbert space and you use it with a Markov-Chain sampler, the constraints guarantees that the initial state of the chain, generated through the <a class="reference internal" href="_generated/hilbert/netket.hilbert.DiscreteHilbert.html#netket.hilbert.DiscreteHilbert.random_state" title="netket.hilbert.DiscreteHilbert.random_state"><code class="xref py py-meth docutils literal notranslate"><span class="pre">random_state()</span></code></a> method, respects the constraint.</p>
 <p>However, <em>it is not guaranteed that a transition rule will respect the constraint.</em>
 In fact, built-in samplers are not aware of the constraints directly, even though some of can still be used effectively with constraints.</p>
-<p>A typical error is to use <span class="xref std std-ref">~netket.sampler.MetropolisLocal</span> with a constrained Hilbert space, such as a Fock space with a fixed number of particles.
-A simple workaround is to use <span class="xref std std-ref">~netket.sampler.MetropolisExchange</span>: as it exchanges the value on two different sites, it guarantees that the total number
+<p>A typical error is to use <a class="reference internal" href="_generated/samplers/netket.sampler.MetropolisLocal.html#netket.sampler.MetropolisLocal" title="netket.sampler.MetropolisLocal"><code class="xref py py-class docutils literal notranslate"><span class="pre">MetropolisLocal</span></code></a> with a constrained Hilbert space, such as a Fock space with a fixed number of particles.
+A simple workaround is to use <a class="reference internal" href="_generated/samplers/netket.sampler.MetropolisExchange.html#netket.sampler.MetropolisExchange" title="netket.sampler.MetropolisExchange"><code class="xref py py-class docutils literal notranslate"><span class="pre">MetropolisExchange</span></code></a>: as it exchanges the value on two different sites, it guarantees that the total number
 of particles is conserved, and therefore respects the constraint if it is correctly imposed at the initialization of the chain.</p>
 <p>In short: when working with constrained Hilbert spaces you have to take extra care when chosing your sampler. And if you have exotic constraints you will most likely need to define your own transition kernel. But don’t worry: it is very easy! (however nobody has yet written documentation for it. In the meantime, have a look at <a class="reference external" href="https://github.com/netket/netket/discussions/755#discussioncomment-858719">this discussion</a>)</p>
 </div>
@@ -728,6 +731,43 @@ should not be a problem as long as you use this method just to initialise your m
 <ul class="simple">
 <li><p>It is also possible to define a custom (Homogeneous) hilbert space with a custom constraint. To see how to do that, check the section…</p></li>
 </ul>
+</div>
+<div class="section" id="defining-custom-constraints">
+<h3>Defining Custom constraints<a class="headerlink" href="#defining-custom-constraints" title="Permalink to this headline">¶</a></h3>
+<p>NetKet provides a custom class <code class="docutils literal notranslate"><span class="pre">CustomHilbert</span></code>, that makes it relatively simple to define your own constaint on homogeneous Hilbert spaces.
+In this example we show how to use it to build a space that behaves like <span class="xref std std-ref">Fock</span>, while enforcing even parity.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numba</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nd">@numba</span><span class="o">.</span><span class="n">njit</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">accept_even</span><span class="p">(</span><span class="n">states</span><span class="p">):</span>
+<span class="gp">&gt;&gt;&gt; </span>	<span class="k">return</span> <span class="n">states</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">n_max</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span> <span class="n">N_sites</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">hi</span> <span class="o">=</span> <span class="n">netket</span><span class="o">.</span><span class="n">hilbert</span><span class="o">.</span><span class="n">CustomHilbert</span><span class="p">(</span><span class="n">local_states</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="n">n_max</span><span class="p">),</span> <span class="n">N</span><span class="o">=</span><span class="n">N_sites</span><span class="p">,</span> <span class="n">constraint_fn</span><span class="o">=</span><span class="n">accept_even</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">hi</span><span class="o">.</span><span class="n">all_states</span><span class="p">()</span>
+<span class="go">array([[0., 0., 0., 0., 0.],</span>
+<span class="go">       [0., 0., 0., 0., 2.],</span>
+<span class="go">       [0., 0., 0., 1., 1.],</span>
+<span class="go">       [0., 0., 0., 2., 0.],</span>
+<span class="go">       ...</span>
+</pre></div>
+</div>
+<p>The constraint function sums the basis number (a number in <code class="docutils literal notranslate"><span class="pre">range(n_max)</span></code>) and then checks if it is even.
+Pleaes notice how we used <code class="docutils literal notranslate"><span class="pre">&#64;numba.njit</span></code> to speed up the constraint.</p>
+<p>If you then want to sample this space, you’ll encounter the following error:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">jax</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">hi</span><span class="o">.</span><span class="n">random_state</span><span class="p">(</span><span class="n">jax</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">PRNGKey</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span> <span class="mi">3</span><span class="p">)</span>
+<span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
+  File <span class="nb">&quot;/home/filippovicentini/Dropbox/Ricerca/Codes/Python/netket/netket/hilbert/abstract_hilbert.py&quot;</span>, line <span class="m">84</span>, in <span class="n">random_state</span>
+    <span class="k">return</span> <span class="n">random</span><span class="o">.</span><span class="n">random_state</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">)</span>
+  File <span class="nb">&quot;plum/function.py&quot;</span>, line <span class="m">537</span>, in <span class="n">plum.function.Function.__call__</span>
+  File <span class="nb">&quot;/home/filippovicentini/Dropbox/Ricerca/Codes/Python/netket/netket/hilbert/random/custom.py&quot;</span>, line <span class="m">25</span>, in <span class="n">random_state</span>
+    <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
+<span class="gr">NotImplementedError</span>
+</pre></div>
+</div>
+<p>This is because you did not specify how to sample the space. To do so, we must use</p>
 </div>
 </div>
 <div class="section" id="using-hilbert-spaces-with-jax-jitted-functions">
