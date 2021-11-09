@@ -1,0 +1,14 @@
+﻿netket.sampler.MetropolisLocalPt
+================================
+
+.. currentmodule:: netket.sampler
+
+.. autoclass:: MetropolisLocalPt
+   :show-inheritance:
+
+   
+      
+   
+      
+
+   
