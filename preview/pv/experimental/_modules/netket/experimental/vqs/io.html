@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>netket.experimental.vqs.io &#8212; netket v3.0 documentation</title>
+    <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/jumbo-style.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/css/all.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/css/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/css/rtd_theme.css" />
+    <script id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/jquery.js"></script>
+    <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/doctools.js"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../../../../_static/js/rtd_theme.js"></script>
+    <link rel="author" title="About these documents" href="../../../../about.html" />
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="../../../../_static/js/jquery-1.12.4.min.js "></script>
+<script type="text/javascript" src="../../../../_static/js/jquery-fix.js "></script>
+<script type="text/javascript" src="../../../../_static/bootstrap-3.4.1/js/bootstrap.min.js "></script>
+<script type="text/javascript" src="../../../../_static/bootstrap-sphinx.js "></script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../../../../index.html"><span><img src="../../../../_static/logonav.png"></span>
+          NetKet</a>
+        <span class="navbar-text navbar-version pull-left"><b></b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+                <li><a href="../../../../getting_started.html">Get Started</a></li>
+                <li><a href="../../../../docs/getting_started.html">Documentation</a></li>
+                <li><a href="../../../../tutorials.html">Tutorials</a></li>
+                <li><a href="../../../../citing.html">Citing NetKet</a></li>
+                <li><a href="../../../../about.html">About</a></li>
+                <li><a href="https://github.com/netket/netket"><i class="fab fa-github" aria-hidden="true"></i></a></li>
+                <li><a href="https://twitter.com/NetKetOrg"><i class="fab fa-twitter" aria-hidden="true"></i></a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../../../../index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"></ul>
+</li>
+              
+            
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../../../../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="body col-md-12 content" role="main">
+      
+  <h1>Source code for netket.experimental.vqs.io</h1><div class="highlight"><pre>
+<span></span><span class="c1"># Copyright 2020, 2021 The NetKet Authors - All rights reserved.</span>
+<span class="c1">#</span>
+<span class="c1"># Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span>
+<span class="c1"># you may not use this file except in compliance with the License.</span>
+<span class="c1"># You may obtain a copy of the License at</span>
+<span class="c1">#</span>
+<span class="c1">#    http://www.apache.org/licenses/LICENSE-2.0</span>
+<span class="c1">#</span>
+<span class="c1"># Unless required by applicable law or agreed to in writing, software</span>
+<span class="c1"># distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span>
+<span class="c1"># WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span>
+<span class="c1"># See the License for the specific language governing permissions and</span>
+<span class="c1"># limitations under the License.</span>
+
+<span class="kn">import</span> <span class="nn">tarfile</span> <span class="k">as</span> <span class="nn">_tarfile</span>
+<span class="kn">from</span> <span class="nn">os</span> <span class="kn">import</span> <span class="n">path</span> <span class="k">as</span> <span class="n">_path</span>
+
+<span class="kn">from</span> <span class="nn">flax</span> <span class="kn">import</span> <span class="n">serialization</span> <span class="k">as</span> <span class="n">_serialization</span>
+<span class="kn">from</span> <span class="nn">netket.utils.types</span> <span class="kn">import</span> <span class="n">PyTree</span> <span class="k">as</span> <span class="n">_PyTree</span>
+
+
+<div class="viewcode-block" id="variables_from_file"><a class="viewcode-back" href="../../../../docs/_generated/experimental/variational/netket.experimental.vqs.variables_from_file.html#netket.experimental.vqs.variables_from_file">[docs]</a><span class="k">def</span> <span class="nf">variables_from_file</span><span class="p">(</span><span class="n">filename</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">variables</span><span class="p">:</span> <span class="n">_PyTree</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Loads the variables of a variational state from a `.mpack` file.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        filename: the file containing the variables. Assumes a .mpack</span>
+<span class="sd">            extension and adds it if missing and no file exists.</span>
+<span class="sd">        variables: An object variables with the same structure and shape</span>
+<span class="sd">            of the object to be deserialized.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        a PyTree like variables</span>
+
+<span class="sd">    Examples:</span>
+<span class="sd">       Serializing the data:</span>
+
+<span class="sd">       &gt;&gt;&gt; import netket as nk</span>
+<span class="sd">       &gt;&gt;&gt; import flax</span>
+<span class="sd">       &gt;&gt;&gt; # construct an RBM model on 10 spins</span>
+<span class="sd">       &gt;&gt;&gt; vstate = nk.variational.MCState(</span>
+<span class="sd">       ...      nk.sampler.MetropolisLocal(nk.hilbert.Spin(0.5)**10),</span>
+<span class="sd">       ...      nk.models.RBM())</span>
+<span class="sd">       &gt;&gt;&gt; with open(&quot;test.mpack&quot;, &#39;wb&#39;) as file:</span>
+<span class="sd">       ...     bytes_written = file.write(flax.serialization.to_bytes(vstate.variables))</span>
+<span class="sd">       &gt;&gt;&gt; print(bytes_written)</span>
+<span class="sd">       1052</span>
+<span class="sd">       &gt;&gt;&gt;</span>
+<span class="sd">       &gt;&gt;&gt; # Deserialize the data</span>
+<span class="sd">       &gt;&gt;&gt;</span>
+<span class="sd">       &gt;&gt;&gt; del vstate</span>
+<span class="sd">       &gt;&gt;&gt; # construct an RBM model on 10 spins</span>
+<span class="sd">       &gt;&gt;&gt; vstate2 = nk.variational.MCState(</span>
+<span class="sd">       ...      nk.sampler.MetropolisLocal(nk.hilbert.Spin(0.5)**10),</span>
+<span class="sd">       ...      nk.models.RBM())</span>
+<span class="sd">       &gt;&gt;&gt; # Load the data by passing the model</span>
+<span class="sd">       &gt;&gt;&gt; vars = nk.variational.experimental.variables_from_file(&quot;test.mpack&quot;,</span>
+<span class="sd">       ...                                                        vstate2.variables)</span>
+<span class="sd">       &gt;&gt;&gt; # update the variables of vstate with the loaded data.</span>
+<span class="sd">       &gt;&gt;&gt; vstate2.variables = vars</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">_path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">filename</span><span class="p">[</span><span class="o">-</span><span class="mi">6</span><span class="p">:]</span> <span class="o">!=</span> <span class="s2">&quot;.mpack&quot;</span><span class="p">:</span>
+            <span class="n">filename</span> <span class="o">=</span> <span class="n">filename</span> <span class="o">+</span> <span class="s2">&quot;.mpack&quot;</span>
+
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">_serialization</span><span class="o">.</span><span class="n">from_bytes</span><span class="p">(</span><span class="n">variables</span><span class="p">,</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">())</span></div>
+
+
+<div class="viewcode-block" id="variables_from_tar"><a class="viewcode-back" href="../../../../docs/_generated/experimental/variational/netket.experimental.vqs.variables_from_tar.html#netket.experimental.vqs.variables_from_tar">[docs]</a><span class="k">def</span> <span class="nf">variables_from_tar</span><span class="p">(</span><span class="n">filename</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">variables</span><span class="p">:</span> <span class="n">_PyTree</span><span class="p">,</span> <span class="n">i</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Loads the variables of a variational state from the i-th element of a `.tar`</span>
+<span class="sd">    archive.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        filename: the tar archive name. Assumes a .tar</span>
+<span class="sd">            extension and adds it if missing and no file exists.</span>
+<span class="sd">        variables: An object variables with the same structure and shape</span>
+<span class="sd">            of the object to be deserialized.</span>
+<span class="sd">        i: the index of the variables to load</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">_path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">filename</span><span class="p">[</span><span class="o">-</span><span class="mi">4</span><span class="p">:]</span> <span class="o">!=</span> <span class="s2">&quot;.tar&quot;</span><span class="p">:</span>
+            <span class="n">filename</span> <span class="o">=</span> <span class="n">filename</span> <span class="o">+</span> <span class="s2">&quot;.tar&quot;</span>
+
+    <span class="k">with</span> <span class="n">_tarfile</span><span class="o">.</span><span class="n">TarFile</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+        <span class="n">info</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">getmember</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;.mpack&quot;</span><span class="p">)</span>
+        <span class="k">with</span> <span class="n">file</span><span class="o">.</span><span class="n">extractfile</span><span class="p">(</span><span class="n">info</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">_serialization</span><span class="o">.</span><span class="n">from_bytes</span><span class="p">(</span><span class="n">variables</span><span class="p">,</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">())</span></div>
+</pre></div>
+
+    </div>
+      
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2019-2021, The Netket authors - All rights reserved.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.4.<br/>
+    </p>
+  </div>
+</footer>
+
+<script type="text/javascript">
+    jQuery(function () {
+        SphinxRtdTheme.Navigation.enable(true);
+      })
+</script>
+
+<!-- Temporary footer
+<div class="footer-wip">
+  <div class="footer-wip-content">
+    This documentation refers to an unreleased version of Netket.
+  </div>
+</div>
+-->
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-118013987-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-118013987-1');
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "url": "https://www.netket.org",
+  "name": "NetKet",
+  "founder": "Giuseppe Carleo",
+  "foundingDate": "2018-04-24",
+  "foundingLocation" : "New York",
+  "logo": "https://www.netket.org/img/logo_small.jpg",
+  "sameAs": [
+    "https://twitter.com/NetKetOrg",
+    "https://github.com/NetKet/netket"
+  ],
+  "description" : "Netket is an open-source project delivering cutting-edge
+  methods for the study of many-body quantum systems with artificial neural
+  networks and machine learning techniques."
+}
+</script>
+
+  </body>
+</html>
