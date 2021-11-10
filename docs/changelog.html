@@ -341,12 +341,9 @@
 <li class="toctree-l4"><a class="reference internal" href="_generated/samplers/netket.sampler.ExactSampler.html">netket.sampler.ExactSampler</a></li>
 <li class="toctree-l4"><a class="reference internal" href="_generated/samplers/netket.sampler.MetropolisSampler.html">netket.sampler.MetropolisSampler</a></li>
 <li class="toctree-l4"><a class="reference internal" href="_generated/samplers/netket.sampler.MetropolisSamplerNumpy.html">netket.sampler.MetropolisSamplerNumpy</a></li>
-<li class="toctree-l4"><a class="reference internal" href="_generated/samplers/netket.sampler.MetropolisPtSampler.html">netket.sampler.MetropolisPtSampler</a></li>
 <li class="toctree-l4"><a class="reference internal" href="_generated/samplers/netket.sampler.MetropolisLocal.html">netket.sampler.MetropolisLocal</a></li>
 <li class="toctree-l4"><a class="reference internal" href="_generated/samplers/netket.sampler.MetropolisExchange.html">netket.sampler.MetropolisExchange</a></li>
 <li class="toctree-l4"><a class="reference internal" href="_generated/samplers/netket.sampler.MetropolisHamiltonian.html">netket.sampler.MetropolisHamiltonian</a></li>
-<li class="toctree-l4"><a class="reference internal" href="_generated/samplers/netket.sampler.MetropolisLocalPt.html">netket.sampler.MetropolisLocalPt</a></li>
-<li class="toctree-l4"><a class="reference internal" href="_generated/samplers/netket.sampler.MetropolisExchangePt.html">netket.sampler.MetropolisExchangePt</a></li>
 <li class="toctree-l4"><a class="reference internal" href="_generated/samplers/netket.sampler.ARDirectSampler.html">netket.sampler.ARDirectSampler</a></li>
 </ul>
 </li>
@@ -476,6 +473,19 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="api-experimental.html">Experimental API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api-experimental.html#samplers">Samplers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="_generated/experimental/samplers/netket.experimental.sampler.MetropolisPtSampler.html">netket.experimental.sampler.MetropolisPtSampler</a></li>
+<li class="toctree-l3"><a class="reference internal" href="_generated/experimental/samplers/netket.experimental.sampler.MetropolisSamplerPmap.html">netket.experimental.sampler.MetropolisSamplerPmap</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api-experimental.html#variational-state-interface">Variational State Interface</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="_generated/experimental/variational/netket.experimental.vqs.variables_from_file.html">netket.experimental.vqs.variables_from_file</a></li>
+<li class="toctree-l4"><a class="reference internal" href="_generated/experimental/variational/netket.experimental.vqs.variables_from_tar.html">netket.experimental.vqs.variables_from_tar</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 
 
@@ -495,10 +505,14 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">Heisenberg</span></code> Hamiltonians support different coupling strengths on <code class="docutils literal notranslate"><span class="pre">Graph</span></code> edges with different colors. <a class="reference external" href="https://github.com/netket/netket/pull/972">#972</a>.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">GraphOperator</span></code> (and <code class="docutils literal notranslate"><span class="pre">Heisenberg</span></code>) now support passing a custom mapping of graph nodes to Hilbert space sites via the new <code class="docutils literal notranslate"><span class="pre">acting_on_subspace</span></code> argument. This makes it possible to create <code class="docutils literal notranslate"><span class="pre">GraphOperator</span></code>s that act on a subset of sites, which is useful in composite Hilbert spaces. <a class="reference external" href="https://github.com/netket/netket/pull/924">#924</a></p></li>
 <li><p>In addition to nearest-neighbor edges, <code class="docutils literal notranslate"><span class="pre">Lattice</span></code> can now generate edges between next-nearest and, more generally, k-nearest neighbors via the constructor argument <code class="docutils literal notranslate"><span class="pre">max_neighbor_order</span></code>. The edges can be distinguished by their <code class="docutils literal notranslate"><span class="pre">color</span></code> property (which is used, e.g., by <code class="docutils literal notranslate"><span class="pre">GraphOperator</span></code> to apply different bond operators). <a class="reference external" href="https://github.com/netket/netket/pull/970">#970</a></p></li>
+<li><p>A new <code class="docutils literal notranslate"><span class="pre">netket.experimental</span></code> submodule has been created and all experimental features have been moved there. Note that in contrast to the other <code class="docutils literal notranslate"><span class="pre">netket</span></code> submodules, <code class="docutils literal notranslate"><span class="pre">netket.experimental</span></code> is not imported by default. <a class="reference external" href="https://github.com/netket/netket/pull/976">#976</a></p></li>
 </ul>
 </div>
 <div class="section" id="breaking-changes">
 <h3>Breaking Changes<a class="headerlink" href="#breaking-changes" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Moved <code class="docutils literal notranslate"><span class="pre">nk.vqs.variables_from_***</span></code> to <code class="docutils literal notranslate"><span class="pre">nk.experimental.vqs</span></code> module. Also moved the experimental samplers to <code class="docutils literal notranslate"><span class="pre">nk.sampler.MetropolisPt</span></code> and <code class="docutils literal notranslate"><span class="pre">nk.sampler.MetropolisPmap</span></code> to <code class="docutils literal notranslate"><span class="pre">nk.experimental.sampler</span></code>. <a class="reference external" href="https://github.com/netket/netket/pull/976">#976</a></p></li>
+</ul>
 </div>
 <div class="section" id="internal-changes">
 <h3>Internal Changes<a class="headerlink" href="#internal-changes" title="Permalink to this headline">¶</a></h3>

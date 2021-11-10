@@ -343,12 +343,9 @@
 <li class="toctree-l4"><a class="reference internal" href="_generated/samplers/netket.sampler.ExactSampler.html">netket.sampler.ExactSampler</a></li>
 <li class="toctree-l4"><a class="reference internal" href="_generated/samplers/netket.sampler.MetropolisSampler.html">netket.sampler.MetropolisSampler</a></li>
 <li class="toctree-l4"><a class="reference internal" href="_generated/samplers/netket.sampler.MetropolisSamplerNumpy.html">netket.sampler.MetropolisSamplerNumpy</a></li>
-<li class="toctree-l4"><a class="reference internal" href="_generated/samplers/netket.sampler.MetropolisPtSampler.html">netket.sampler.MetropolisPtSampler</a></li>
 <li class="toctree-l4"><a class="reference internal" href="_generated/samplers/netket.sampler.MetropolisLocal.html">netket.sampler.MetropolisLocal</a></li>
 <li class="toctree-l4"><a class="reference internal" href="_generated/samplers/netket.sampler.MetropolisExchange.html">netket.sampler.MetropolisExchange</a></li>
 <li class="toctree-l4"><a class="reference internal" href="_generated/samplers/netket.sampler.MetropolisHamiltonian.html">netket.sampler.MetropolisHamiltonian</a></li>
-<li class="toctree-l4"><a class="reference internal" href="_generated/samplers/netket.sampler.MetropolisLocalPt.html">netket.sampler.MetropolisLocalPt</a></li>
-<li class="toctree-l4"><a class="reference internal" href="_generated/samplers/netket.sampler.MetropolisExchangePt.html">netket.sampler.MetropolisExchangePt</a></li>
 <li class="toctree-l4"><a class="reference internal" href="_generated/samplers/netket.sampler.ARDirectSampler.html">netket.sampler.ARDirectSampler</a></li>
 </ul>
 </li>
@@ -474,6 +471,19 @@
 <li class="toctree-l2"><a class="reference internal" href="#callbacks">Callbacks</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="_generated/callbacks/netket.callbacks.EarlyStopping.html">netket.callbacks.EarlyStopping</a></li>
 <li class="toctree-l3"><a class="reference internal" href="_generated/callbacks/netket.callbacks.Timeout.html">netket.callbacks.Timeout</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api-experimental.html">Experimental API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api-experimental.html#samplers">Samplers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="_generated/experimental/samplers/netket.experimental.sampler.MetropolisPtSampler.html">netket.experimental.sampler.MetropolisPtSampler</a></li>
+<li class="toctree-l3"><a class="reference internal" href="_generated/experimental/samplers/netket.experimental.sampler.MetropolisSamplerPmap.html">netket.experimental.sampler.MetropolisSamplerPmap</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api-experimental.html#variational-state-interface">Variational State Interface</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="_generated/experimental/variational/netket.experimental.vqs.variables_from_file.html">netket.experimental.vqs.variables_from_file</a></li>
+<li class="toctree-l4"><a class="reference internal" href="_generated/experimental/variational/netket.experimental.vqs.variables_from_tar.html">netket.experimental.vqs.variables_from_tar</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -715,25 +725,16 @@ have a much higher overhead for small to moderate (for GPUs) system sizes.</p>
 <tr class="row-even"><td><p><a class="reference internal" href="_generated/samplers/netket.sampler.MetropolisSamplerNumpy.html#netket.sampler.MetropolisSamplerNumpy" title="netket.sampler.MetropolisSamplerNumpy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">netket.sampler.MetropolisSamplerNumpy</span></code></a></p></td>
 <td><p>Metropolis-Hastings sampler for an Hilbert space according to a specific transition rule executed on CPU through Numpy.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="_generated/samplers/netket.sampler.MetropolisPtSampler.html#netket.sampler.MetropolisPtSampler" title="netket.sampler.MetropolisPtSampler"><code class="xref py py-obj docutils literal notranslate"><span class="pre">netket.sampler.MetropolisPtSampler</span></code></a></p></td>
-<td><p>Metropolis-Hastings with Parallel Tempering sampler.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="_generated/samplers/netket.sampler.MetropolisLocal.html#netket.sampler.MetropolisLocal" title="netket.sampler.MetropolisLocal"><code class="xref py py-obj docutils literal notranslate"><span class="pre">netket.sampler.MetropolisLocal</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="_generated/samplers/netket.sampler.MetropolisLocal.html#netket.sampler.MetropolisLocal" title="netket.sampler.MetropolisLocal"><code class="xref py py-obj docutils literal notranslate"><span class="pre">netket.sampler.MetropolisLocal</span></code></a></p></td>
 <td><p>Sampler acting on one local degree of freedom.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="_generated/samplers/netket.sampler.MetropolisExchange.html#netket.sampler.MetropolisExchange" title="netket.sampler.MetropolisExchange"><code class="xref py py-obj docutils literal notranslate"><span class="pre">netket.sampler.MetropolisExchange</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="_generated/samplers/netket.sampler.MetropolisExchange.html#netket.sampler.MetropolisExchange" title="netket.sampler.MetropolisExchange"><code class="xref py py-obj docutils literal notranslate"><span class="pre">netket.sampler.MetropolisExchange</span></code></a></p></td>
 <td><p>This sampler acts locally only on two local degree of freedom <span class="math notranslate nohighlight">\(s_i\)</span> and <span class="math notranslate nohighlight">\(s_j\)</span>, and proposes a new state: <span class="math notranslate nohighlight">\(s_1 \dots s^\prime_i \dots s^\prime_j \dots s_N\)</span>, where in general <span class="math notranslate nohighlight">\(s^\prime_i \neq s_i\)</span> and <span class="math notranslate nohighlight">\(s^\prime_j \neq s_j\)</span>.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="_generated/samplers/netket.sampler.MetropolisHamiltonian.html#netket.sampler.MetropolisHamiltonian" title="netket.sampler.MetropolisHamiltonian"><code class="xref py py-obj docutils literal notranslate"><span class="pre">netket.sampler.MetropolisHamiltonian</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="_generated/samplers/netket.sampler.MetropolisHamiltonian.html#netket.sampler.MetropolisHamiltonian" title="netket.sampler.MetropolisHamiltonian"><code class="xref py py-obj docutils literal notranslate"><span class="pre">netket.sampler.MetropolisHamiltonian</span></code></a></p></td>
 <td><p>Sampling based on the off-diagonal elements of a Hamiltonian (or a generic Operator).</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="_generated/samplers/netket.sampler.MetropolisLocalPt.html#netket.sampler.MetropolisLocalPt" title="netket.sampler.MetropolisLocalPt"><code class="xref py py-obj docutils literal notranslate"><span class="pre">netket.sampler.MetropolisLocalPt</span></code></a></p></td>
-<td><p>Sampler acting on one local degree of freedom.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="_generated/samplers/netket.sampler.MetropolisExchangePt.html#netket.sampler.MetropolisExchangePt" title="netket.sampler.MetropolisExchangePt"><code class="xref py py-obj docutils literal notranslate"><span class="pre">netket.sampler.MetropolisExchangePt</span></code></a></p></td>
-<td><p>This sampler acts locally only on two local degree of freedom <span class="math notranslate nohighlight">\(s_i\)</span> and <span class="math notranslate nohighlight">\(s_j\)</span>, and proposes a new state: <span class="math notranslate nohighlight">\(s_1 \dots s^\prime_i \dots s^\prime_j \dots s_N\)</span>, where in general <span class="math notranslate nohighlight">\(s^\prime_i \neq s_i\)</span> and <span class="math notranslate nohighlight">\(s^\prime_j \neq s_j\)</span>.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="_generated/samplers/netket.sampler.ARDirectSampler.html#netket.sampler.ARDirectSampler" title="netket.sampler.ARDirectSampler"><code class="xref py py-obj docutils literal notranslate"><span class="pre">netket.sampler.ARDirectSampler</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="_generated/samplers/netket.sampler.ARDirectSampler.html#netket.sampler.ARDirectSampler" title="netket.sampler.ARDirectSampler"><code class="xref py py-obj docutils literal notranslate"><span class="pre">netket.sampler.ARDirectSampler</span></code></a></p></td>
 <td><p>Direct sampler for autoregressive neural networks.</p></td>
 </tr>
 </tbody>
