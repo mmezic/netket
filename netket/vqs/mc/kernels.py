@@ -24,6 +24,7 @@ import jax.numpy as jnp
 
 import netket.jax as nkjax
 
+
 def local_value_kernel(logpsi, pars, σ, σp, mel):
     """
     local_value kernel for MCState and generic operators
@@ -47,15 +48,15 @@ def local_value_op_op_cost(logpsi, pars, σ, σp, mel):
     return jnp.sum(mel * jnp.exp(logpsi(pars, σ_σp) - logpsi(pars, σ_σ)))
 
 
+## Chunked versions of those kernels are defined below.
 
-## Batched versions of those kernels are defined below.
 
-def local_value_kernel_batched(logpsi, pars, σ, σp, mel, *, batch_size=None):
+def local_valuekernel_chunked(logpsi, pars, σ, σp, mel, *, chunk_size=None):
     """
     local_value kernel for MCState and generic operators
     """
     logpsi_batched = nkjax.vmap_batched(
-        partial(logpsi, pars), in_axes=0, batch_size=batch_size
+        partial(logpsi, pars), in_axes=0, batch_size=chunk_size
     )
     N = σ.shape[-1]
 
@@ -65,19 +66,19 @@ def local_value_kernel_batched(logpsi, pars, σ, σp, mel, *, batch_size=None):
     return jnp.sum(mel * jnp.exp(logpsi_σp - logpsi_σ), axis=-1)
 
 
-def local_value_squared_kernel_batched(logpsi, pars, σ, σp, mel, *, batch_size=None):
+def local_value_squaredkernel_chunked(logpsi, pars, σ, σp, mel, *, chunk_size=None):
     """
     local_value kernel for MCState and Squared (generic) operators
     """
     return (
         jnp.abs(
-            local_value_kernel_batched(logpsi, pars, σ, σp, mel, batch_size=batch_size)
+            local_valuekernel_chunked(logpsi, pars, σ, σp, mel, batch_size=chunk_size)
         )
         ** 2
     )
 
 
-def local_value_op_op_cost_batched(logpsi, pars, σ, σp, mel, *, batch_size=None):
+def local_value_op_op_cost_chunked(logpsi, pars, σ, σp, mel, *, chunk_size=None):
     """
     local_value kernel for MCMixedState and generic operators
     """
@@ -90,6 +91,6 @@ def local_value_op_op_cost_batched(logpsi, pars, σ, σp, mel, *, batch_size=Non
     )
     σ_σ = jax.vmap(lambda σi: jnp.hstack((σi, σi)), in_axes=0)(σ)
 
-    return local_value_kernel_batched(
-        logpsi, pars, σ_σ, σ_σp, mel, batch_size=batch_size
+    return local_valuekernel_chunked(
+        logpsi, pars, σ_σ, σ_σp, mel, batch_size=chunk_size
     )
