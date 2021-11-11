@@ -558,7 +558,7 @@ something like <code class="code docutils literal notranslate"><span class="pre"
 <ul class="simple">
 <li><p>It might simply be a precision issue, as you might be using single precision (<code class="code docutils literal notranslate"><span class="pre">np.float32</span></code>, <code class="code docutils literal notranslate"><span class="pre">np.complex64</span></code>) instead of double precision (<code class="code docutils literal notranslate"><span class="pre">np.float64</span></code>, <code class="code docutils literal notranslate"><span class="pre">np.complex128</span></code>). Be careful that if you use <code class="code docutils literal notranslate"><span class="pre">float</span></code> and <code class="code docutils literal notranslate"><span class="pre">complex</span></code> as dtype, they will not always behave as you expect!
 They are known as <a class="reference external" href="https://jax.readthedocs.io/en/latest/type_promotion.html?highlight=type-promotion">weak dtypes</a>, and when multiplied by a single-precision number they will be converted to single precision.
-This issue might manifest especially when using Flax, which respects type promotion, as opposed to <cite>jax.experimental.stax</cite>, which does not.</p></li>
+This issue might manifest especially when using Flax, which respects type promotion, as opposed to <cite>jax.example_libraries.stax</cite>, which does not.</p></li>
 <li><p>Check the initial parameters. In the NetKet 2 models were always initialized with weights normally distributed.
 In Netket 3, <cite>netket.nn</cite> layers use the same default (normal distribution with standard deviation 0.01) but
 if you use general flax layers they might use different initializers.
